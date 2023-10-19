@@ -1,0 +1,28 @@
+Ideas para el nivel:
+
+Introducción (dentro de un armario)
+
+Primero una zona relativamente oscura, (quiza ligera interfaz diciendo que botones pulsar) primero una pequeña zona para andar, 
+y luego una zona para enseñar a saltar (ligero plataformeo) hasta llegar a la mochila.
+
+Cuando recoges la mochila tendria que haber una animación y luego tendrias la mochila. 
+Justo mas adelante te encontraras con una serie de muros, uno de cada uno de los colores 
+que van a usarse para mostar que los colores son debiles a si mismos, y mostrar como disparan los modos de la mochila.
+
+Esto estara seguido con una sección introductoria de los enemigos, solos en sus situaciones mas vulnerables. 
+(ej, azul pero cerca, verde pero no puede llegar a ti, y rojos que se van a asustan cuando llegues, intenta huir pero no hay donde huir).
+
+----------
+
+Experimentación (la habitación en si)
+
+Primero deberia haber una sección vallada sin enemigos donde se vea desde arriba el resto de la habitación, 
+se vea bien el ordenador y quede claro que es importante respecto al resto de la habitación. Esto seria en una estanteria, 
+debajo de la plancha mas alta porque la mas alta esta practicamente en el techo.
+
+Luego avanzarias y llegarias al primer combate, con 2 enemigos verdes, haciendote enfrentarte a este tipo de enemigo en verdadera desventaja por primera vez.
+Subirias ligeramente 
+
+----------
+
+Conclusión (ordenador gamer)
