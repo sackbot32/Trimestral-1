@@ -60,6 +60,10 @@ public class Shooting : MonoBehaviour
             muzzle.Play();
             if (Physics.Raycast(ray,out hit, weaponCharacteristic[chosenWeapon].range,layerMask))
             {
+                if (hit.transform.gameObject.GetComponent<EnemyHealth>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<EnemyHealth>().GetHit(weaponCharacteristic[chosenWeapon].damage,weaponCharacteristic[chosenWeapon].color);
+                }
                 gunLine.SetPosition(1, hit.point);
             } else
             {
