@@ -14,18 +14,24 @@ public class WeaponCharacteristic{
 }
 public class Shooting : MonoBehaviour
 {
-    //public int type;
+    private FirstPersonController player;
+    private float startingSpeed;
     public WeaponCharacteristic[] weaponCharacteristic;
+    public GameObject explosion;
     public int chosenWeapon;
     public float effectTimer;
+    public int howManyMulti;
     private Ray ray;
     private float lastTimeShot;
     private int layerMask;
     private LineRenderer gunLine;
     private ParticleSystem muzzle;
 
+
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
+        startingSpeed = player.walkSpeed;
         gunLine = GetComponent<LineRenderer>(); 
         gunLine.enabled = false;
         muzzle = transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -52,23 +58,21 @@ public class Shooting : MonoBehaviour
         if (Input.GetButton("Fire1") && lastTimeShot > weaponCharacteristic[chosenWeapon].rate)
         {
             gunLine.enabled = true;
-            gunLine.SetPosition(0, transform.position);
             ray.direction = transform.forward;
-            ray.origin = transform.position;
-            RaycastHit hit;
+            gunLine.SetPosition(0, transform.position);
             lastTimeShot = 0;
             muzzle.Play();
-            if (Physics.Raycast(ray,out hit, weaponCharacteristic[chosenWeapon].range,layerMask))
+            if (weaponCharacteristic[chosenWeapon].multiShot)
             {
-                if (hit.transform.gameObject.GetComponent<EnemyHealth>() != null)
+                for (int i = 0; i < howManyMulti; i++)
                 {
-                    hit.transform.gameObject.GetComponent<EnemyHealth>().GetHit(weaponCharacteristic[chosenWeapon].damage,weaponCharacteristic[chosenWeapon].color);
+                    Shoot();
                 }
-                gunLine.SetPosition(1, hit.point);
             } else
             {
-                gunLine.SetPosition(1, transform.position + transform.forward * weaponCharacteristic[chosenWeapon].range);
+                Shoot();
             }
+            
         }
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
@@ -105,6 +109,36 @@ public class Shooting : MonoBehaviour
             changeColor(weaponCharacteristic[chosenWeapon].color);
         }
 
+        if(chosenWeapon == 1)
+        {
+            player.walkSpeed = startingSpeed * 2;
+        } else
+        {
+            player.walkSpeed = startingSpeed;
+        }
+
+    }
+
+    private void Shoot()
+    {
+        RaycastHit hit;
+        ray.origin = transform.position + new Vector3(Random.Range(-weaponCharacteristic[chosenWeapon].spread, weaponCharacteristic[chosenWeapon].spread), Random.Range(-weaponCharacteristic[chosenWeapon].spread, weaponCharacteristic[chosenWeapon].spread), 0);
+        if (Physics.Raycast(ray, out hit, weaponCharacteristic[chosenWeapon].range, layerMask))
+        {
+            if (hit.transform.gameObject.GetComponent<EnemyHealth>() != null)
+            {
+                hit.transform.gameObject.GetComponent<EnemyHealth>().GetHit(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
+            }
+            if(weaponCharacteristic[chosenWeapon].color == "Red")
+            {
+                Instantiate(explosion, hit.point, explosion.transform.rotation);
+            }
+            gunLine.SetPosition(1, hit.point);
+        }
+        else
+        {
+            gunLine.SetPosition(1, transform.position + transform.forward * weaponCharacteristic[chosenWeapon].range);
+        }
     }
 
     private void changeColor(string color)
