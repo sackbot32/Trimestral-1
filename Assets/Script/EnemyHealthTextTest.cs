@@ -6,12 +6,12 @@ using TMPro;
 
 public class EnemyHealthTextTest : MonoBehaviour
 {
-    private EnemyHealth enemyHealth;
-    private TMPro.TextMeshProUGUI text;
+    public EnemyHealth enemyHealth;
+    public TMPro.TextMeshProUGUI text;
     // Start is called before the first frame update
     void Start()
     {
-        enemyHealth = transform.parent.transform.parent.GetComponent<EnemyHealth>();
+        enemyHealth = transform.root.GetComponent<EnemyHealth>();
         text = GetComponent<TMPro.TextMeshProUGUI>();
     }
 

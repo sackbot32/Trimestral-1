@@ -123,11 +123,19 @@ public class Shooting : MonoBehaviour
     {
         RaycastHit hit;
         ray.origin = transform.position + new Vector3(Random.Range(-weaponCharacteristic[chosenWeapon].spread, weaponCharacteristic[chosenWeapon].spread), Random.Range(-weaponCharacteristic[chosenWeapon].spread, weaponCharacteristic[chosenWeapon].spread), 0);
-        if (Physics.Raycast(ray, out hit, weaponCharacteristic[chosenWeapon].range, layerMask))
+        if (Physics.Raycast(ray, out hit, weaponCharacteristic[chosenWeapon].range, layerMask,QueryTriggerInteraction.Ignore))
         {
-            if (hit.transform.gameObject.GetComponent<EnemyHealth>() != null)
+            if(hit.transform.tag == "Enemy")
             {
-                hit.transform.gameObject.GetComponent<EnemyHealth>().GetHit(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
+
+                if (hit.transform.gameObject.GetComponent<EnemyHealth>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<EnemyHealth>().GetHit(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
+                }
+                else
+                {
+                    hit.transform.root.GetComponent<EnemyHealth>().GetHit(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
+                }
             }
             if(weaponCharacteristic[chosenWeapon].color == "Red")
             {

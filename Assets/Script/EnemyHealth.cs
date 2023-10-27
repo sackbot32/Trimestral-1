@@ -14,9 +14,15 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        if (GetComponent<MeshRenderer>() != null)
+        {
+           meshRenderer = GetComponent<MeshRenderer>();
+        }
         color = debugColorChange[debugColorChangeNumber];
-        changeColor(color);
+        if (GetComponent<MeshRenderer>() != null)
+        {
+            changeColor(color);
+        }
         currentHealth = startingHealth;
     }
 
@@ -27,7 +33,10 @@ public class EnemyHealth : MonoBehaviour
         {
             debugColorChangeNumber = (debugColorChangeNumber + 1) % debugColorChange.Length;
             color = debugColorChange[debugColorChangeNumber];
-            changeColor(color);
+            if (GetComponent<MeshRenderer>() != null)
+            {
+                changeColor(color);
+            }
 
         }
     }

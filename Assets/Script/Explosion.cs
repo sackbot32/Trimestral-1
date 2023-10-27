@@ -7,6 +7,7 @@ public class Explosion : MonoBehaviour
     public int damage;
     public float maxSize;
     public float howMuchGrow;
+    public float force;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +30,25 @@ public class Explosion : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            other.GetComponent<EnemyHealth>().GetHit(damage,"Red");
+            if(other.GetComponent<EnemyHealth>() != null)
+            {
+                other.GetComponent<EnemyHealth>().GetHit(damage,"Red");
+            } else
+            {
+                other.transform.root.GetComponent<EnemyHealth>().GetHit(damage, "Red");
+            }
         }
         if (other.GetComponent<Rigidbody>())
         {
+            //Vector3 dir = transform.position - other.transform.position;
 
+            other.GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, transform.localScale.x);
+        } else
+        {
+            if (other.transform.root.GetComponent<Rigidbody>())
+            {
+                other.transform.root.GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, transform.localScale.x);
+            }
         }
     }
 }
