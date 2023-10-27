@@ -14,6 +14,8 @@ public class WeaponCharacteristic{
 }
 public class Shooting : MonoBehaviour
 {
+    public float weaponChangeTime;
+    public bool canShoot;
     private FirstPersonController player;
     private float startingSpeed;
     public WeaponCharacteristic[] weaponCharacteristic;
@@ -30,6 +32,7 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
+        canShoot = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
         startingSpeed = player.walkSpeed;
         gunLine = GetComponent<LineRenderer>(); 
@@ -46,6 +49,13 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         lastTimeShot += Time.deltaTime;
+        if (!canShoot)
+        {
+            if(lastTimeShot > weaponChangeTime)
+            {
+                canShoot = true;
+            }
+        }
 
         if (lastTimeShot > effectTimer)
         {
@@ -55,7 +65,7 @@ public class Shooting : MonoBehaviour
             gunLine.SetPosition(1, transform.position);
         }
 
-        if (Input.GetButton("Fire1") && lastTimeShot > weaponCharacteristic[chosenWeapon].rate)
+        if (Input.GetButton("Fire1") && lastTimeShot > weaponCharacteristic[chosenWeapon].rate && canShoot)
         {
             gunLine.enabled = true;
             ray.direction = transform.forward;
@@ -74,39 +84,26 @@ public class Shooting : MonoBehaviour
             }
             
         }
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        if(Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            chosenWeapon += 1;
-            if(chosenWeapon >= weaponCharacteristic.Length) 
-            {
-                chosenWeapon = 0;
-            }
-            changeColor(weaponCharacteristic[chosenWeapon].color);
+            scrollWeapon(1);
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+        if(Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            chosenWeapon -= 1;
-            if (chosenWeapon < 0)
-            {
-                chosenWeapon = 2;
-            }
-            changeColor(weaponCharacteristic[chosenWeapon].color);
+            scrollWeapon(-1);
         }
 
         if (Input.GetKeyDown("1"))
         {
-            chosenWeapon = 0;
-            changeColor(weaponCharacteristic[chosenWeapon].color);
+            changeWeapon(0);
         }
         if (Input.GetKeyDown("2"))
         {
-            chosenWeapon = 1;
-            changeColor(weaponCharacteristic[chosenWeapon].color);
+            changeWeapon(1);
         }
         if (Input.GetKeyDown("3"))
         {
-            chosenWeapon = 2;
-            changeColor(weaponCharacteristic[chosenWeapon].color);
+            changeWeapon(2);
         }
 
         if(chosenWeapon == 1)
@@ -119,6 +116,43 @@ public class Shooting : MonoBehaviour
 
     }
 
+    private void changeWeapon(int choice)
+    {
+        if (canShoot)
+        {
+            chosenWeapon = choice;
+            changeColor(weaponCharacteristic[chosenWeapon].color);
+            canShoot = false;
+            lastTimeShot = 0;
+        }
+    }
+
+    private void scrollWeapon(int direction)
+    {
+        if (canShoot)
+        {
+            if(direction > 0)
+            {
+                chosenWeapon += 1;
+                if (chosenWeapon >= weaponCharacteristic.Length)
+                {
+                    chosenWeapon = 0;
+                }
+            } else if( direction < 0)
+            {
+                chosenWeapon -= 1;
+                if (chosenWeapon < 0)
+                {
+                    chosenWeapon = 2;
+                }
+            
+            }
+            changeColor(weaponCharacteristic[chosenWeapon].color);
+            canShoot = false;
+            lastTimeShot = 0;
+        }
+        
+    }
     private void Shoot()
     {
         RaycastHit hit;
@@ -154,17 +188,20 @@ public class Shooting : MonoBehaviour
         switch (color)
         {
             case "Red":
+                transform.parent.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
                 gunLine.startColor = new Color(1,0,0);
                 gunLine.endColor = new Color(1,0,0);
                 muzzle.startColor = new Color(1, 0, 0);
                 break;
             case "Blue":
                 print("llega a blue ");
+                transform.parent.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
                 gunLine.startColor = new Color(0, 0, 1);
                 gunLine.endColor = new Color(0, 0, 1);
                 muzzle.startColor = new Color(0, 0, 1);
                 break;            
             case "Green":
+                transform.parent.GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0);
                 gunLine.startColor = new Color(0, 1, 0);
                 gunLine.endColor = new Color(0, 1, 0);
                 muzzle.startColor =  new Color(0, 1, 0);
