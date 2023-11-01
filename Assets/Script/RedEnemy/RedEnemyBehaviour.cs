@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RedEnemyBehaviour : MonoBehaviour
 {
-    private NavMeshController navMeshController;
-    private RedEnemyShooting enemyShooting;
+    public NavMeshController navMeshController;
+    public RedEnemyShooting enemyShooting;
     public Transform target;
     // Start is called before the first frame update
     void Start()
@@ -20,15 +20,5 @@ public class RedEnemyBehaviour : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            enemyShooting.canAim = true;
-            navMeshController.canWalk = true;
-            navMeshController.SetTarget(target);
-
-        }
-    }
 
 }
