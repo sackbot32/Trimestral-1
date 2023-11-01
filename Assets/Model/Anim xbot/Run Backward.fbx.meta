@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6fbf90a6ebb919044979e912c432fc2f
+guid: a7733b9d8359d5a4994f385f322d70d6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -17,10 +17,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'mixamorig:LeftLeg' : position
-      error = 81.975655 mm\n\t'mixamorig:LeftFoot' : position error = 104.087143
-      mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -36,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: run forward
+      name: run backward
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0

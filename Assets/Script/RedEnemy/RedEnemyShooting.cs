@@ -14,10 +14,13 @@ public class RedEnemyShooting : MonoBehaviour
     private Vector3 realOrigin;
     private Transform player;
     public Vector3 aimOffset;
+    public Transform myRotation;
+    public bool canAim;
+    public LayerMask mask;
     // Start is called before the first frame update
     void Start()
     {
-
+        canAim = false;
         player = GameObject.FindGameObjectWithTag("EnemyAim").transform;
 
     }
@@ -25,24 +28,37 @@ public class RedEnemyShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        transform.LookAt(player.position + aimOffset);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((player.position + aimOffset) - transform.position), Time.deltaTime * 5);
-        line.SetPosition(0, offset.position);
+        if(canAim) 
+        { 
+            transform.LookAt(player.position + aimOffset);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, myRotation.rotation, Time.deltaTime * 5);
+            line.SetPosition(0, offset.position);
 
-        lastTimeShot += Time.deltaTime;
-        if (Physics.Raycast(offset.position, offset.forward, out hit, range,7))
-        {
-            line.SetPosition(1, hit.point);
-            if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("EnemyAim"))
+            lastTimeShot += Time.deltaTime;
+            if(lastTimeShot > rate)
             {
-                print("Player hit");
+                RaycastHit hit;
+                if (Physics.Raycast(offset.position, offset.forward, out hit, range,mask))
+                {
+                    line.SetPosition(1, hit.point);
+                    if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("EnemyAim"))
+                    {
+                        print("Player hit");
+                        
+                    }
+
+                } else
+                {
+                    line.SetPosition(1, offset.localToWorldMatrix.GetPosition() + offset.forward*range);
+                }
+                line.enabled = enabled;
                 lastTimeShot = 0;
             }
 
-        } else
-        {
-            line.SetPosition(1, offset.localToWorldMatrix.GetPosition() + offset.forward*range);
+            if(lastTimeShot > rate/5) 
+            {
+                line.enabled = false;
+            }
         }
     }
 }

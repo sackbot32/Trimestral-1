@@ -8,24 +8,43 @@ public class NavMeshController : MonoBehaviour
     public Transform target;
     private NavMeshAgent agent;
     private Animator anim;
+    private Rigidbody rb;
+    public bool canWalk;
     // Start is called before the first frame update
     void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
-        SetTarget(target);
-        anim.SetBool("Running", !thereYet());
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (canWalk)
+        {
 
-        anim.SetBool("Running", !thereYet());
+            Vector3 normalizedMovement = agent.desiredVelocity.normalized;
+
+            Vector3 forwardVector = Vector3.Project(normalizedMovement, transform.forward);
+
+            Vector3 rightVector = Vector3.Project(normalizedMovement, transform.right);
+
+            float forwardVelocity = forwardVector.magnitude * Vector3.Dot(forwardVector, transform.forward);
+
+            float rightVelocity = rightVector.magnitude * Vector3.Dot(rightVector, transform.right);
+            anim.SetBool("Running", !thereYet());
+            anim.SetFloat("velY", forwardVelocity);
+            anim.SetFloat("velX", rightVelocity);
+        } else
+        {
+            anim.SetBool("Running", false);
+        }
     }
 
     public void SetTarget(Transform newTarget)

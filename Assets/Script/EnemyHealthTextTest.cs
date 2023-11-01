@@ -11,7 +11,7 @@ public class EnemyHealthTextTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyHealth = transform.root.GetComponent<EnemyHealth>();
+        //enemyHealth = transform.root.GetComponent<EnemyHealth>();
         text = GetComponent<TMPro.TextMeshProUGUI>();
     }
 
