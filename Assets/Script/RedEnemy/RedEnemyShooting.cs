@@ -14,7 +14,6 @@ public class RedEnemyShooting : MonoBehaviour
     private Vector3 realOrigin;
     private Transform player;
     public Vector3 aimOffset;
-    public Transform myRotation;
     public bool canAim;
     public LayerMask mask;
     // Start is called before the first frame update
@@ -31,6 +30,7 @@ public class RedEnemyShooting : MonoBehaviour
         if(canAim) 
         { 
             transform.LookAt(player.position + aimOffset);
+            //myRotation.LookAt(player.position + aimOffset);
             //transform.rotation = Quaternion.Slerp(transform.rotation, myRotation.rotation, Time.deltaTime * 5);
             line.SetPosition(0, offset.position);
 

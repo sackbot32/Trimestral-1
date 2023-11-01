@@ -18,7 +18,10 @@ public class EnemyHealth : MonoBehaviour
         {
            meshRenderer = GetComponent<MeshRenderer>();
         }
-        color = debugColorChange[debugColorChangeNumber];
+        if(debugColorChange.Length > 0)
+        {
+            color = debugColorChange[debugColorChangeNumber];
+        }
         if (GetComponent<MeshRenderer>() != null)
         {
             changeColor(color);
