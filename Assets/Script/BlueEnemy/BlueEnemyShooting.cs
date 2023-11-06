@@ -12,6 +12,7 @@ public class BlueEnemyShooting : MonoBehaviour
     public LineRenderer line;
     RaycastHit hit;
     private Vector3 realOrigin;
+    private Transform aimObject;
     private Transform player;
     public Vector3 aimOffset;
     public bool canAim;
@@ -21,7 +22,8 @@ public class BlueEnemyShooting : MonoBehaviour
     void Start()
     {
         canAim = false;
-        player = GameObject.FindGameObjectWithTag("EnemyAim").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        aimObject = GameObject.FindGameObjectWithTag("EnemyAim").transform;
 
     }
 
@@ -30,7 +32,9 @@ public class BlueEnemyShooting : MonoBehaviour
     {
         if (canAim)
         {
-            transform.LookAt(player.position + aimOffset);
+            //transform.LookAt(aimObject.position + aimOffset);
+            transform.LookAt(player.position + aimOffset );
+            offset.transform.LookAt(player.position + aimOffset);
             line.SetPosition(0, offset.position);
 
             
@@ -63,7 +67,7 @@ public class BlueEnemyShooting : MonoBehaviour
                 }
                 else
                 {
-                    line.SetPosition(1, offset.localToWorldMatrix.GetPosition() + offset.forward * range);
+                    line.SetPosition(1, /*offset.localToWorldMatrix.GetPosition() + */offset.forward * range);
                 }
 
         }

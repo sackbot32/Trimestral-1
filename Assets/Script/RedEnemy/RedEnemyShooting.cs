@@ -13,6 +13,7 @@ public class RedEnemyShooting : MonoBehaviour
     RaycastHit hit;
     private Vector3 realOrigin;
     private Transform player;
+    public Transform hip;
     public Vector3 aimOffset;
     public bool canAim;
     public LayerMask mask;
@@ -29,7 +30,8 @@ public class RedEnemyShooting : MonoBehaviour
     {
         if(canAim) 
         { 
-            transform.LookAt(player.position + aimOffset);
+            //transform.LookAt(player.position);
+            offset.transform.LookAt(player.position);
             //myRotation.LookAt(player.position + aimOffset);
             //transform.rotation = Quaternion.Slerp(transform.rotation, myRotation.rotation, Time.deltaTime * 5);
             line.SetPosition(0, offset.position);
@@ -41,10 +43,14 @@ public class RedEnemyShooting : MonoBehaviour
                 if (Physics.Raycast(offset.position, offset.forward, out hit, range,mask))
                 {
                     line.SetPosition(1, hit.point);
-                    if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("EnemyAim"))
+                    if (hit.transform.CompareTag("Player") )
                     {
                         print("Player hit");
                         
+                    }
+                    if (hit.transform.CompareTag("EnemyAim"))
+                    {
+                        print("Player miss");
                     }
 
                 } else
