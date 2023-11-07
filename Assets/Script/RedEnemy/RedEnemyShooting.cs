@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class RedEnemyShooting : MonoBehaviour
 {
     private float lastTimeShot;
     public float rate;
     public int damage;
-    public Transform offset;
+    public Transform gunPoint;
     public int range;
     public LineRenderer line;
     RaycastHit hit;
     private Vector3 realOrigin;
     private Transform player;
-    public Transform hip;
     public Vector3 aimOffset;
+    public AimConstraint[] aimConstraint;
     public bool canAim;
     public LayerMask mask;
     // Start is called before the first frame update
@@ -31,16 +32,17 @@ public class RedEnemyShooting : MonoBehaviour
         if(canAim) 
         { 
             //transform.LookAt(player.position);
-            offset.transform.LookAt(player.position);
+            //hip.transform.LookAt(player.position);
+            gunPoint.transform.LookAt(player.position);
             //myRotation.LookAt(player.position + aimOffset);
             //transform.rotation = Quaternion.Slerp(transform.rotation, myRotation.rotation, Time.deltaTime * 5);
-            line.SetPosition(0, offset.position);
+            line.SetPosition(0, gunPoint.position);
 
             lastTimeShot += Time.deltaTime;
             if(lastTimeShot > rate)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(offset.position, offset.forward, out hit, range,mask))
+                if (Physics.Raycast(gunPoint.localToWorldMatrix.GetPosition(), gunPoint.forward, out hit, range,mask))
                 {
                     line.SetPosition(1, hit.point);
                     if (hit.transform.CompareTag("Player") )
@@ -55,7 +57,7 @@ public class RedEnemyShooting : MonoBehaviour
 
                 } else
                 {
-                    line.SetPosition(1, offset.localToWorldMatrix.GetPosition() + offset.forward*range);
+                    line.SetPosition(1, gunPoint.localToWorldMatrix.GetPosition() + gunPoint.forward*range);
                 }
                 line.enabled = enabled;
                 lastTimeShot = 0;
@@ -66,5 +68,14 @@ public class RedEnemyShooting : MonoBehaviour
                 line.enabled = false;
             }
         }
+    }
+    public void activateAim()
+    {
+        foreach (AimConstraint item in aimConstraint)
+        {
+            item.constraintActive = true;
+            item.rotationOffset = new Vector3(0, 0, 0);
+        }
+        canAim = true;
     }
 }

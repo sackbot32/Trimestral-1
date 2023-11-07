@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class BlueEnemyShooting : MonoBehaviour
 {
     public float lastTimeShot;
     public float rate;
     public int damage;
-    public Transform offset;
+    public Transform gunPoint;
     public int range;
     public LineRenderer line;
     RaycastHit hit;
@@ -15,6 +16,7 @@ public class BlueEnemyShooting : MonoBehaviour
     private Transform aimObject;
     private Transform player;
     public Vector3 aimOffset;
+    public AimConstraint aimConstraint;
     public bool canAim;
     public LayerMask mask;
     public float shotDelay;
@@ -33,13 +35,14 @@ public class BlueEnemyShooting : MonoBehaviour
         if (canAim)
         {
             //transform.LookAt(aimObject.position + aimOffset);
-            transform.LookAt(player.position + aimOffset );
-            offset.transform.LookAt(player.position + aimOffset);
-            line.SetPosition(0, offset.position);
+            //transform.LookAt(player.position + aimOffset );
+            gunPoint.transform.LookAt(aimObject.position);
+            
+            line.SetPosition(0, gunPoint.position);
 
             
                 RaycastHit hit;
-                if (Physics.Raycast(offset.position, offset.forward, out hit, range, mask))
+                if (Physics.Raycast(gunPoint.position, gunPoint.forward, out hit, range, mask))
                 {
                     line.SetPosition(1, hit.point);
                     if (hit.transform.CompareTag("Player"))
@@ -67,9 +70,17 @@ public class BlueEnemyShooting : MonoBehaviour
                 }
                 else
                 {
-                    line.SetPosition(1, /*offset.localToWorldMatrix.GetPosition() + */offset.forward * range);
+                    line.SetPosition(1, /*offset.localToWorldMatrix.GetPosition() + */gunPoint.forward * range);
                 }
 
         }
+    }
+
+    public void activateAim()
+    {
+
+        aimConstraint.constraintActive = true;
+        aimConstraint.rotationOffset = new Vector3 (0, 0, 0);
+        canAim = true;
     }
 }

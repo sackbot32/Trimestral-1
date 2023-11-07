@@ -12,7 +12,7 @@ public class RedDetection : MonoBehaviour
         {
             foreach (RedEnemyBehaviour redEnemy in redEnemyBehaviours)
             {
-                redEnemy.enemyShooting.canAim = true;
+                redEnemy.transform.GetComponent<RedEnemyShooting>().activateAim();
                 redEnemy.navMeshController.canWalk = true;
                 redEnemy.navMeshController.SetTarget(redEnemy.target);
             }
