@@ -11,9 +11,11 @@ public class EnemyHealth : MonoBehaviour
     public string[] debugColorChange;
     public int debugColorChangeNumber;
     private MeshRenderer meshRenderer;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         if (GetComponent<MeshRenderer>() != null)
         {
            meshRenderer = GetComponent<MeshRenderer>();
@@ -32,7 +34,7 @@ public class EnemyHealth : MonoBehaviour
     private void Update()
     {
         //Debug Change Color
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && debugRes)
         {
             debugColorChangeNumber = (debugColorChangeNumber + 1) % debugColorChange.Length;
             color = debugColorChange[debugColorChangeNumber];
@@ -68,9 +70,41 @@ public class EnemyHealth : MonoBehaviour
                 currentHealth = startingHealth;
             } else
             {
-                Destroy(gameObject);
+                if (!anim.GetBool("Dead"))
+                {
+                    StartCoroutine(Death());
+                }
             }
         }
+    }
+
+    IEnumerator Death()
+    {
+        switch (color)
+        {
+            case "Red":
+                if(GetComponent<RedEnemyShooting>() != null)
+                {
+                    GetComponent<RedEnemyShooting>().deactivateAim();
+                    GetComponent<NavMeshController>().StopIT();
+                }
+                break;
+            case "Blue":
+                if (GetComponent<BlueEnemyShooting>() != null)
+                {
+                    GetComponent<BlueEnemyShooting>().deactivateAim();
+                }
+                break;
+            case "Green":
+
+                break;
+
+            default:
+                break;
+        }
+        anim.SetBool("Dead",true);
+        yield return new WaitForSeconds(1.1f);
+        Destroy(gameObject);
     }
 
     private void changeColor(string color)

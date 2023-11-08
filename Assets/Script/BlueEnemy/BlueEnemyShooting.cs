@@ -23,6 +23,7 @@ public class BlueEnemyShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        line.enabled = false;
         canAim = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         aimObject = GameObject.FindGameObjectWithTag("EnemyAim").transform;
@@ -73,14 +74,19 @@ public class BlueEnemyShooting : MonoBehaviour
                     line.SetPosition(1, /*offset.localToWorldMatrix.GetPosition() + */gunPoint.forward * range);
                 }
 
-        }
+        } 
     }
 
     public void activateAim()
     {
-
+        line.enabled = true;
         aimConstraint.constraintActive = true;
         aimConstraint.rotationOffset = new Vector3 (0, 0, 0);
         canAim = true;
+    }
+    public void deactivateAim()
+    {
+        line.enabled = false;
+        canAim = false;
     }
 }

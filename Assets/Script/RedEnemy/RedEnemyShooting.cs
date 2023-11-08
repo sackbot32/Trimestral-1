@@ -23,6 +23,7 @@ public class RedEnemyShooting : MonoBehaviour
     {
         canAim = false;
         player = GameObject.FindGameObjectWithTag("EnemyAim").transform;
+        line.enabled = false;
 
     }
 
@@ -71,11 +72,22 @@ public class RedEnemyShooting : MonoBehaviour
     }
     public void activateAim()
     {
+        line.enabled = true;
         foreach (AimConstraint item in aimConstraint)
         {
             item.constraintActive = true;
             item.rotationOffset = new Vector3(0, 0, 0);
         }
         canAim = true;
+    }
+
+    public void deactivateAim()
+    {
+        line.enabled = false;
+        foreach (AimConstraint item in aimConstraint)
+        {
+            item.rotationOffset = new Vector3(0, 0, 0);
+        }
+        canAim = false;
     }
 }

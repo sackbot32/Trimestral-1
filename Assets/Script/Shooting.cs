@@ -109,6 +109,9 @@ public class Shooting : MonoBehaviour
         if(chosenWeapon == 1)
         {
             player.walkSpeed = startingSpeed * 2;
+        } else if (weaponCharacteristic[chosenWeapon].color == "Blue" && lastTimeShot < weaponCharacteristic[chosenWeapon].rate)
+        {
+            player.walkSpeed = startingSpeed / 3;
         } else
         {
             player.walkSpeed = startingSpeed;
@@ -175,6 +178,8 @@ public class Shooting : MonoBehaviour
             {
                 Instantiate(explosion, hit.point, explosion.transform.rotation);
             }
+            
+
             gunLine.SetPosition(1, hit.point);
         }
         else
