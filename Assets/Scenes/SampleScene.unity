@@ -3000,6 +3000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  agent: {fileID: 0}
   canWalk: 0
 --- !u!1 &939491143 stripped
 GameObject:
@@ -6608,7 +6609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5267323797051281449, guid: 066f682dfe2ec5f4eb729edc1eb51b2b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7595040009422687375, guid: 066f682dfe2ec5f4eb729edc1eb51b2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6778,7 +6779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588260286310137772, guid: e277bee1b2eb6c84895769d8fb6cd871, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2771914050255436690, guid: e277bee1b2eb6c84895769d8fb6cd871, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
