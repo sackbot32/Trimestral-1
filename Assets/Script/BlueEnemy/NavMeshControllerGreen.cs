@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMeshController : MonoBehaviour
+public class NavMeshControllerGreen : MonoBehaviour
 {
     public Transform target;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private Animator anim;
     private Rigidbody rb;
     public bool canWalk;
@@ -38,7 +38,7 @@ public class NavMeshController : MonoBehaviour
             float forwardVelocity = forwardVector.magnitude * Vector3.Dot(forwardVector, transform.forward);
 
             float rightVelocity = rightVector.magnitude * Vector3.Dot(rightVector, transform.right);
-            anim.SetBool("Running", !thereYet());
+            anim.SetBool("Running", !thereYetGreen());
             anim.SetFloat("velY", forwardVelocity);
             anim.SetFloat("velX", rightVelocity);
         } else

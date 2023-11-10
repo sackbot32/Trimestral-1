@@ -14,7 +14,7 @@ public class RedDetection : MonoBehaviour
             {
                 redEnemy.transform.GetComponent<RedEnemyShooting>().activateAim();
                 redEnemy.navMeshController.canWalk = true;
-                redEnemy.navMeshController.SetTarget(redEnemy.target);
+                redEnemy.navMeshController.SetTarget(redEnemy.target.position);
             }
 
         }
