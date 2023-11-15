@@ -70,7 +70,7 @@ public class Shooting : MonoBehaviour
             gunLine.SetPosition(1, transform.position);
         }
 
-        if (Input.GetButton("Fire1") && lastTimeShot > weaponCharacteristic[chosenWeapon].rate && canShoot)
+        if (Input.GetButton("Fire1") && weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate && canShoot)
         {
             gunLine.enabled = true;
             ray.direction = transform.forward;

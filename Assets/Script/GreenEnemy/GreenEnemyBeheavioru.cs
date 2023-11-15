@@ -36,11 +36,11 @@ public class GreenEnemyBeheavioru : MonoBehaviour
         }
         if (navMeshController.thereYet())
         {
-            navMeshController.agent.speed = 0;
+            navMeshController.agent.speed = 3.5f;
             animator.SetBool("Attack", true);
             spine.constraintActive = true;
             spine.rotationOffset = new Vector3(0, 0, 0);
-            //rb.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
             navMeshController.StopIT();
         }
     }
