@@ -11,6 +11,7 @@ public class GreenEnemyBeheavioru : MonoBehaviour
     private Rigidbody rb;
     public AimConstraint spine;
     private Animator animator;
+    public ParticleSystem particle;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -42,5 +43,17 @@ public class GreenEnemyBeheavioru : MonoBehaviour
             //rb.velocity = Vector3.zero;
             navMeshController.StopIT();
         }
+    }
+    
+    public void Attack()
+    {
+        particle.Play();
+        //Activar hitbox de ataque
+    }
+
+    public void EndAttack()
+    {
+        particle.Clear();
+        //Desactivar hitbox de ataque
     }
 }

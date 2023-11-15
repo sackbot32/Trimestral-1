@@ -11,6 +11,8 @@ public class WeaponCharacteristic{
     public float spread;
     public bool multiShot;
     public float range;
+    public int healing;
+    public float lastTimeShot;
 }
 public class Shooting : MonoBehaviour
 {
@@ -48,7 +50,10 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lastTimeShot += Time.deltaTime;
+        foreach (WeaponCharacteristic item in weaponCharacteristic)
+        {
+            item.lastTimeShot += Time.deltaTime;
+        }
         if (!canShoot)
         {
             if(lastTimeShot > weaponChangeTime)
@@ -70,7 +75,7 @@ public class Shooting : MonoBehaviour
             gunLine.enabled = true;
             ray.direction = transform.forward;
             gunLine.SetPosition(0, transform.position);
-            lastTimeShot = 0;
+            weaponCharacteristic[chosenWeapon].lastTimeShot = 0;
             muzzle.Play();
             if (weaponCharacteristic[chosenWeapon].multiShot)
             {
