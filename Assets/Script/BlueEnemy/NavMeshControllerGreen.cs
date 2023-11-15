@@ -38,7 +38,7 @@ public class NavMeshControllerGreen : MonoBehaviour
             float forwardVelocity = forwardVector.magnitude * Vector3.Dot(forwardVector, transform.forward);
 
             float rightVelocity = rightVector.magnitude * Vector3.Dot(rightVector, transform.right);
-            anim.SetBool("Running", !thereYetGreen());
+            anim.SetBool("Running", !thereYet());
             anim.SetFloat("velY", forwardVelocity);
             anim.SetFloat("velX", rightVelocity);
         } else
@@ -61,9 +61,5 @@ public class NavMeshControllerGreen : MonoBehaviour
     public bool thereYet()
     {
         return agent.remainingDistance < agent.stoppingDistance && !agent.pathPending;
-    }
-    public bool thereYetGreen()
-    {
-        return agent.remainingDistance < agent.stoppingDistance + 5 && !agent.pathPending;
     }
 }

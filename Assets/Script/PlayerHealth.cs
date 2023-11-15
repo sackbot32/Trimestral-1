@@ -17,4 +17,22 @@ public class PlayerHealth : MonoBehaviour
     {
         
     }
+
+    public void takeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if(currentHealth <= 0)
+        {
+            //Kill player
+        }
+    }
+
+    public void Heal(int healing)
+    {
+        currentHealth += healing;
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
 }
