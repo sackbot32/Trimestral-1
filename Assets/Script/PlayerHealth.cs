@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
-    private int currentHealth;
+    public int currentHealth;
     public int maxHealth;
+    public bool debugRes;
+    public Image healthBar;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,8 +23,10 @@ public class PlayerHealth : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)
+        HealthBarUpdate();
+        if (currentHealth <= 0)
         {
+            currentHealth = 0;
             //Kill player
         }
     }
@@ -30,9 +34,15 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(int healing)
     {
         currentHealth += healing;
+        HealthBarUpdate();
         if(currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
+    }
+
+    private void HealthBarUpdate()
+    {
+        healthBar.transform.localScale = new Vector3((float)currentHealth / (float)maxHealth, 1, 1);
     }
 }

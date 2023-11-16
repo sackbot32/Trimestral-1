@@ -26,7 +26,6 @@ public class Shooting : MonoBehaviour
     public float effectTimer;
     public int howManyMulti;
     private Ray ray;
-    private float lastTimeShot;
     private int layerMask;
     private LineRenderer gunLine;
     private ParticleSystem muzzle;
@@ -42,7 +41,7 @@ public class Shooting : MonoBehaviour
         muzzle = transform.GetChild(0).GetComponent<ParticleSystem>();
         muzzle.Stop();
         muzzle.Clear();
-        lastTimeShot = weaponCharacteristic[chosenWeapon].rate;
+        weaponCharacteristic[chosenWeapon].lastTimeShot = weaponCharacteristic[chosenWeapon].rate;
         changeColor(weaponCharacteristic[chosenWeapon].color);
         layerMask = LayerMask.GetMask("Shootable", "Enemy");
     }
@@ -56,13 +55,13 @@ public class Shooting : MonoBehaviour
         }
         if (!canShoot)
         {
-            if(lastTimeShot > weaponChangeTime)
+            if(weaponCharacteristic[chosenWeapon].lastTimeShot > weaponChangeTime)
             {
                 canShoot = true;
             }
         }
 
-        if (lastTimeShot > effectTimer)
+        if (weaponCharacteristic[chosenWeapon].lastTimeShot > effectTimer)
         {
             gunLine.enabled = false;
             muzzle.Stop();
@@ -114,7 +113,7 @@ public class Shooting : MonoBehaviour
         if(chosenWeapon == 1)
         {
             player.walkSpeed = startingSpeed * 2;
-        } else if (weaponCharacteristic[chosenWeapon].color == "Blue" && lastTimeShot < weaponCharacteristic[chosenWeapon].rate)
+        } else if (weaponCharacteristic[chosenWeapon].color == "Blue" && weaponCharacteristic[chosenWeapon].lastTimeShot < weaponCharacteristic[chosenWeapon].rate)
         {
             player.walkSpeed = startingSpeed / 3;
         } else
@@ -131,7 +130,7 @@ public class Shooting : MonoBehaviour
             chosenWeapon = choice;
             changeColor(weaponCharacteristic[chosenWeapon].color);
             canShoot = false;
-            lastTimeShot = 0;
+            //weaponCharacteristic[chosenWeapon].lastTimeShot = 0;
         }
     }
 
@@ -157,7 +156,7 @@ public class Shooting : MonoBehaviour
             }
             changeColor(weaponCharacteristic[chosenWeapon].color);
             canShoot = false;
-            lastTimeShot = 0;
+            //weaponCharacteristic[chosenWeapon].lastTimeShot = 0;
         }
         
     }

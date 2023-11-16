@@ -50,12 +50,16 @@ public class NavMeshControllerGreen : MonoBehaviour
     public void SetTarget(Vector3 newTarget)
     {
         agent.SetDestination(newTarget);
-        agent.isStopped = false;
     }
 
     public void StopIT()
     {
         agent.isStopped = true;
+    }
+
+    public void resumeIT()
+    {
+        agent.isStopped = false;
     }
 
     public bool thereYet()

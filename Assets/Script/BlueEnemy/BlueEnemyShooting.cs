@@ -58,6 +58,7 @@ public class BlueEnemyShooting : MonoBehaviour
                                 if (lastTimeShot >= shotDelay)
                                 {
                                     print("sniper hit player");
+                                    hit.transform.GetComponent<PlayerHealth>().takeDamage(damage);
                                     lastTimeShot = 0;
                                 }
                             }

@@ -48,8 +48,12 @@ public class RedEnemyShooting : MonoBehaviour
                     line.SetPosition(1, hit.point);
                     if (hit.transform.CompareTag("Player") )
                     {
-                        print("Player hit");
-                        
+                        if (hit.transform.GetComponent<PlayerHealth>() != null)
+                        {
+                            print("choca con jugador");
+                            hit.transform.GetComponent<PlayerHealth>().takeDamage(damage);
+                        }
+
                     }
                     if (hit.transform.CompareTag("EnemyAim"))
                     {

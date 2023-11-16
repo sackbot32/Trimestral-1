@@ -12,6 +12,9 @@ public class EnemyHealth : MonoBehaviour
     public int debugColorChangeNumber;
     private MeshRenderer meshRenderer;
     private Animator anim;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
