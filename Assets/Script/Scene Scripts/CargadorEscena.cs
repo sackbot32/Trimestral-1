@@ -2,25 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class CargadorEscena : MonoBehaviour
 {
     public static CargadorEscena cE;
 
+    public int sceneCount;
+
+    public GameObject[] portales;
+    
+
     private void Awake()
     {
         cE = this;
+        SceneManager.LoadScene("Scene I");
     }
-    // Start is called before the first frame update
-    void Start()
+    public void CargandoEscena()
     {
         Debug.Log("Loading New Scene");
-        SceneManager.LoadScene("Scene I", LoadSceneMode.Additive);
+    }
+    public void MasDeUnaEscena()
+    {
+        if (sceneCount > 1)
+        {
+            Debug.Log("More than one scene loaded")
+;       }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
+        if(other.tag == "Player")
+        {
+            CargarlasEscenas();
+        }
+        
+    }
+
+    public void CargarlasEscenas()
+    {
+        
     }
 }
