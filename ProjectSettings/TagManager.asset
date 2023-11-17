@@ -9,6 +9,7 @@ TagManager:
   - EnemyAim
   - Portal 1
   - Portal 2
+  - EnemyAimBlue
   layers:
   - Default
   - TransparentFX

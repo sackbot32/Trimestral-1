@@ -26,7 +26,7 @@ public class BlueEnemyShooting : MonoBehaviour
         line.enabled = false;
         canAim = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        aimObject = GameObject.FindGameObjectWithTag("EnemyAim").transform;
+        aimObject = GameObject.FindGameObjectWithTag("EnemyAimBlue").transform;
 
     }
 
@@ -66,7 +66,11 @@ public class BlueEnemyShooting : MonoBehaviour
 
                     } else
                     {
-                        lastTimeShot = 0;
+                        lastTimeShot -= Time.deltaTime;
+                        if(lastTimeShot <= 0)
+                        {
+                            lastTimeShot = 0;
+                        }
                     }
 
                 }

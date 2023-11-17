@@ -8,15 +8,22 @@ public class CargadorEscena : MonoBehaviour
 {
     public static CargadorEscena cE;
 
-    public int sceneCount;
+    public string[] currentSceneList;
 
-    public GameObject[] portales;
+    public int sceneCount;
     
 
     private void Awake()
     {
         cE = this;
-        SceneManager.LoadScene("Scene I");
+        if(currentSceneList.Length == 0)
+        {
+            SceneManager.LoadScene("Scene I", LoadSceneMode.Additive);
+        } else
+        {
+            CargarlasEscenas(currentSceneList);
+        }
+        
     }
     public void CargandoEscena()
     {
@@ -30,17 +37,45 @@ public class CargadorEscena : MonoBehaviour
 ;       }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void CargarlasEscenas(string[] listaDeEscenas)
     {
-        if(other.tag == "Player")
+        currentSceneList = listaDeEscenas;
+        foreach (Scene escenaActiva in getAllActiveScenes())
         {
-            CargarlasEscenas();
+            print("tenemos escenas activas");
+            bool estaEnLaLista = false;
+            foreach (string escena in listaDeEscenas)
+            {
+                if(escenaActiva.name == escena)
+                {
+                    estaEnLaLista = true;
+                }
+            }
+            if (!estaEnLaLista && escenaActiva.name != "Principal Scene")
+            {
+                SceneManager.UnloadSceneAsync(escenaActiva);
+                print("eliminamos escena" + escenaActiva.name);
+            }
         }
-        
+        foreach (string escena in listaDeEscenas)
+        {
+            if (!SceneManager.GetSceneByName(escena).isLoaded)
+            {
+                SceneManager.LoadScene(escena, LoadSceneMode.Additive);
+            }
+        }
     }
 
-    public void CargarlasEscenas()
+    private Scene[] getAllActiveScenes()
     {
-        
+        int countLoaded = SceneManager.sceneCount;
+        Scene[] loadedScenes = new Scene[countLoaded];
+
+        for (int i = 0; i < countLoaded; i++)
+        {
+            loadedScenes[i] = SceneManager.GetSceneAt(i);
+        }
+
+        return loadedScenes;
     }
 }
