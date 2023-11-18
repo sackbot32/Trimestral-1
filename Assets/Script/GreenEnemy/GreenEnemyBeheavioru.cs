@@ -41,12 +41,10 @@ public class GreenEnemyBeheavioru : MonoBehaviour
             animator.SetBool("Attack",false);
             //spine.constraintActive = false;
             //spine.transform.rotation = new Quaternion(0,0,0,0);
-            navMeshController.agent.speed = 3.5f;
             navMeshController.resumeIT();
         }
         if (navMeshController.canWalk && navMeshController.thereYet())
         {
-            navMeshController.agent.speed = 3.5f;
             animator.SetBool("Attack", true);
             rb.velocity = Vector3.zero;
             navMeshController.StopIT();

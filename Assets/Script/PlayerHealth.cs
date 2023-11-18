@@ -23,22 +23,22 @@ public class PlayerHealth : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
-        HealthBarUpdate();
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             //Kill player
         }
+        HealthBarUpdate();
     }
 
     public void Heal(int healing)
     {
         currentHealth += healing;
-        HealthBarUpdate();
         if(currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
+        HealthBarUpdate();
     }
 
     private void HealthBarUpdate()

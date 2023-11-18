@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -174,7 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824af9f8c13eaaa499a4caa389f9ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 13
+  forBlue: 1
+  whichWeapon: {fileID: 1090594959}
 --- !u!4 &29414181
 Transform:
   m_ObjectHideFlags: 0
@@ -1551,7 +1553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &641771424
 Transform:
   m_ObjectHideFlags: 0
@@ -2733,7 +2735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &937239580
 Transform:
   m_ObjectHideFlags: 0
@@ -2764,7 +2766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: Green
-  startingHealth: 30
+  startingHealth: 80
   debugRes: 0
   debugColorChange:
   - Green
@@ -2829,7 +2831,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2926,6 +2928,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  forBlue: 0
+  whichWeapon: {fileID: 0}
 --- !u!4 &1054348916
 Transform:
   m_ObjectHideFlags: 0
@@ -2962,6 +2966,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1090594959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5805677153713108351, guid: 877b713d19138224d9e494951c57f9eb, type: 3}
+  m_PrefabInstance: {fileID: 1270695066612806870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00d3b11896cb86488e3174ade0959ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1234224117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7363,6 +7378,22 @@ PrefabInstance:
     - target: {fileID: 2785940542869669931, guid: 877b713d19138224d9e494951c57f9eb, type: 3}
       propertyPath: m_Name
       value: FirstPersonController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805677153713108351, guid: 877b713d19138224d9e494951c57f9eb, type: 3}
+      propertyPath: weaponCharacteristic.Array.data[1].damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805677153713108351, guid: 877b713d19138224d9e494951c57f9eb, type: 3}
+      propertyPath: weaponCharacteristic.Array.data[0].healing
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805677153713108351, guid: 877b713d19138224d9e494951c57f9eb, type: 3}
+      propertyPath: weaponCharacteristic.Array.data[1].healing
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805677153713108351, guid: 877b713d19138224d9e494951c57f9eb, type: 3}
+      propertyPath: weaponCharacteristic.Array.data[2].healing
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7955231301652792383, guid: 877b713d19138224d9e494951c57f9eb, type: 3}
       propertyPath: healthBar

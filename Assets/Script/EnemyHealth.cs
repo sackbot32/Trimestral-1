@@ -58,13 +58,8 @@ public class EnemyHealth : MonoBehaviour
     public void GetHit(int damage, string hitColor)
     {
 
-        if(hitColor == color)
-        {
-            currentHealth -= damage;
-        } else
-        {
-            currentHealth -= damage - damage/2;
-        }
+        currentHealth -= calculateDamage(damage,hitColor);
+        
 
         if(currentHealth <= 0)
         {
@@ -79,6 +74,69 @@ public class EnemyHealth : MonoBehaviour
                 }
             }
         }
+    }
+
+    private int calculateDamage(int damage, string hitColor)
+    {
+        int newDamage = 0;
+        switch (color)
+        {
+            case "Red":
+                switch (hitColor)
+                {
+                    case "Red":
+                        newDamage = damage;
+                        break;
+                    case "Blue":
+                        newDamage = damage / 4;
+                        break;
+                    case "Green":
+                        newDamage = damage / 4;
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+            case "Blue":
+                switch (hitColor)
+                {
+                    case "Red":
+                        newDamage = damage / 2;
+                        break;
+                    case "Blue":
+                        newDamage = damage;
+                        break;
+                    case "Green":
+                        newDamage = damage / 4;
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+            case "Green":
+                switch (hitColor)
+                {
+                    case "Red":
+                        newDamage = damage / 4;
+                        break;
+                    case "Blue":
+                        newDamage = damage / 4;
+                        break;
+                    case "Green":
+                        newDamage = damage;
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+
+            default:
+                break;
+        }
+        return newDamage;
     }
 
     IEnumerator Death()
@@ -99,7 +157,10 @@ public class EnemyHealth : MonoBehaviour
                 }
                 break;
             case "Green":
-
+                if (GetComponent<GreenEnemyBeheavioru>() != null)
+                {
+                    GetComponent<NavMeshControllerGreen>().StopIT();
+                }
                 break;
 
             default:

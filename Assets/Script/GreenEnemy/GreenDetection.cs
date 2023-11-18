@@ -12,8 +12,11 @@ public class GreenDetection : MonoBehaviour
         {
             foreach (GreenEnemyBeheavioru greenEnemy in greens)
             {
-                greenEnemy.navMeshController.SetTarget(greenEnemy.target.position);
-                greenEnemy.navMeshController.canWalk = true;
+                if(greenEnemy != null)
+                {
+                    greenEnemy.navMeshController.SetTarget(greenEnemy.target.position);
+                    greenEnemy.navMeshController.canWalk = true;
+                }
             }
 
         }

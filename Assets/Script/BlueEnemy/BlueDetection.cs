@@ -11,7 +11,10 @@ public class BlueDetection : MonoBehaviour
         { 
                 foreach (BlueEnemyShooting blue in blueEnemyShootings)
             {
-                blue.activateAim();
+                if (blue != null){
+
+                    blue.activateAim();
+                }
             }
         }
     }

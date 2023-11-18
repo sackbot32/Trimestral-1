@@ -10,11 +10,17 @@ public class RedDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            foreach (RedEnemyBehaviour redEnemy in redEnemyBehaviours)
+            if(redEnemyBehaviours.Length > 0)
             {
-                redEnemy.transform.GetComponent<RedEnemyShooting>().activateAim();
-                redEnemy.navMeshController.canWalk = true;
-                redEnemy.navMeshController.SetTarget(redEnemy.target.position);
+                foreach (RedEnemyBehaviour redEnemy in redEnemyBehaviours)
+                {
+                    if(redEnemy != null)
+                    {
+                        redEnemy.transform.GetComponent<RedEnemyShooting>().activateAim();
+                        redEnemy.navMeshController.canWalk = true;
+                        redEnemy.navMeshController.SetTarget(redEnemy.target.position);
+                    }
+                }
             }
 
         }
