@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Escenas de prueba/Uno.unity
     guid: 7a882d97c7dfc9f4bb1ab55f40b3ac71
+  - enabled: 1
+    path: Assets/Scenes/Escenas de prueba/Dos.unity
+    guid: eb29770fe4142bd438022beff3321195
+  - enabled: 1
+    path: Assets/Scenes/Escenas de prueba/Tres.unity
+    guid: c27c40a3bcb2cca448dc59484120886b
+  - enabled: 1
+    path: Assets/Scenes/Escenas de prueba/Cuatro.unity
+    guid: f0eee642590249f4585daf36b8c669e7
   m_configObjects: {}
