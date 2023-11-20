@@ -8,21 +8,40 @@ public class CargadorEscena : MonoBehaviour
 {
     public static CargadorEscena cE;
 
+    public string escenaPrincipal;
+
     public string[] currentSceneList;
 
+    public string[] startingSceneList;
+
     public int sceneCount;
+
+    public bool first;
     
 
     private void Awake()
     {
         cE = this;
-        if(currentSceneList.Length == 0)
+        if (GameObject.FindGameObjectsWithTag("SceneManager").Length > 1)
         {
-            SceneManager.LoadScene("Scene I", LoadSceneMode.Additive);
-        } else
-        {
-            CargarlasEscenas(currentSceneList);
+            Destroy(this.gameObject);
         }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+            if (!first)
+            {
+                print("llega aqui");
+                CargarlasEscenas(startingSceneList);
+                first = true;
+            }
+        }
+
+
+    }
+
+    private void OnEnable()
+    {
         
     }
     public void CargandoEscena()
@@ -51,7 +70,7 @@ public class CargadorEscena : MonoBehaviour
                     estaEnLaLista = true;
                 }
             }
-            if (!estaEnLaLista && escenaActiva.name != "Principal Scene")
+            if (!estaEnLaLista && escenaActiva.name != escenaPrincipal)
             {
                 SceneManager.UnloadSceneAsync(escenaActiva);
                 print("eliminamos escena" + escenaActiva.name);
@@ -63,6 +82,17 @@ public class CargadorEscena : MonoBehaviour
             {
                 SceneManager.LoadScene(escena, LoadSceneMode.Additive);
             }
+        }
+    }
+
+    public void ReCargarLasEscenas()
+    {
+        SceneManager.LoadScene(escenaPrincipal);
+        foreach (string escena in currentSceneList)
+        {
+           print("llega");
+           SceneManager.LoadScene(escena, LoadSceneMode.Additive);
+            
         }
     }
 
