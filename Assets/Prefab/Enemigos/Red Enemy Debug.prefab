@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: 2
-  damage: 0
+  damage: 5
   gunPoint: {fileID: 3730365363745992673}
   range: 9999
   line: {fileID: 4496792518332603692}

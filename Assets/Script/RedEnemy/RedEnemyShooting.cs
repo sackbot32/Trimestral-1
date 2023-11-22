@@ -76,9 +76,14 @@ public class RedEnemyShooting : MonoBehaviour
     }
     public void activateAim()
     {
+
         line.enabled = true;
         foreach (AimConstraint item in aimConstraint)
         {
+            ConstraintSource source = new ConstraintSource();
+            source.sourceTransform = player.transform;
+            source.weight = 1;
+            item.AddSource(source);
             item.constraintActive = true;
             item.rotationOffset = new Vector3(0, 0, 0);
         }

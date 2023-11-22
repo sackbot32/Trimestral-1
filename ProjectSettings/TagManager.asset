@@ -9,6 +9,7 @@ TagManager:
   - EnemyAim
   - EnemyAimBlue
   - SceneManager
+  - GunBarrel
   layers:
   - Default
   - TransparentFX

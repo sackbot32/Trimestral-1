@@ -87,6 +87,7 @@ public class CargadorEscena : MonoBehaviour
 
     public void ReCargarLasEscenas()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(escenaPrincipal);
         foreach (string escena in currentSceneList)
         {

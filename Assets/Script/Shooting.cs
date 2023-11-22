@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class WeaponCharacteristic{
@@ -29,6 +30,8 @@ public class Shooting : MonoBehaviour
     private int layerMask;
     private LineRenderer gunLine;
     private ParticleSystem muzzle;
+    public Animator backpack;
+    public InputActionReference shoot;
 
 
     private void Start()
@@ -63,14 +66,22 @@ public class Shooting : MonoBehaviour
 
         if (weaponCharacteristic[chosenWeapon].lastTimeShot > effectTimer)
         {
+            if(weaponCharacteristic[chosenWeapon].color == "Blue" && Input.GetButton("Fire1"))
+            {
+
+            } else
+            {
+                backpack.SetBool("Shooting", false);
+            }
             gunLine.enabled = false;
             muzzle.Stop();
             muzzle.Clear();
             gunLine.SetPosition(1, transform.position);
         }
 
-        if (Input.GetButton("Fire1") && weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate && canShoot)
+        if (shoot.action.IsPressed() && weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate && canShoot)
         {
+            backpack.SetBool("Shooting", true);
             gunLine.enabled = true;
             ray.direction = transform.forward;
             gunLine.SetPosition(0, transform.position);
@@ -166,7 +177,8 @@ public class Shooting : MonoBehaviour
         ray.origin = transform.position + new Vector3(Random.Range(-weaponCharacteristic[chosenWeapon].spread, weaponCharacteristic[chosenWeapon].spread), Random.Range(-weaponCharacteristic[chosenWeapon].spread, weaponCharacteristic[chosenWeapon].spread), 0);
         if (Physics.Raycast(ray, out hit, weaponCharacteristic[chosenWeapon].range, layerMask,QueryTriggerInteraction.Ignore))
         {
-            if(hit.transform.tag == "Enemy")
+            
+            if (hit.transform.tag == "Enemy")
             {
 
                 if (hit.transform.gameObject.GetComponent<EnemyHealth>() != null)
@@ -198,23 +210,23 @@ public class Shooting : MonoBehaviour
 
     private void changeColor(string color)
     {
+        //backpack.SetBool("ChangingWeapon",true);
         switch (color)
         {
             case "Red":
-                transform.parent.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
+                backpack.transform.GetChild(1).transform.GetComponent<SkinnedMeshRenderer>().material.color = new Color(1, 0, 0);
                 gunLine.startColor = new Color(1,0,0);
                 gunLine.endColor = new Color(1,0,0);
                 muzzle.startColor = new Color(1, 0, 0);
                 break;
             case "Blue":
-                print("llega a blue ");
-                transform.parent.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
+                backpack.transform.GetChild(1).transform.GetComponent<SkinnedMeshRenderer>().material.color = new Color(0, 0, 1);
                 gunLine.startColor = new Color(0, 0, 1);
                 gunLine.endColor = new Color(0, 0, 1);
                 muzzle.startColor = new Color(0, 0, 1);
                 break;            
             case "Green":
-                transform.parent.GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0);
+                backpack.transform.GetChild(1).transform.GetComponent<SkinnedMeshRenderer>().material.color = new Color(0, 1, 0);
                 gunLine.startColor = new Color(0, 1, 0);
                 gunLine.endColor = new Color(0, 1, 0);
                 muzzle.startColor =  new Color(0, 1, 0);
@@ -222,6 +234,16 @@ public class Shooting : MonoBehaviour
 
             default:
                 break;
+        }
+
+        Invoke("turnChagingOff",backpack.GetCurrentAnimatorClipInfo(0).Length);
+    }
+
+    public void turnChagingOff()
+    {
+        if (backpack.GetBool("ChangingWeapon"))
+        {
+            backpack.SetBool("ChangingWeapon", false);
         }
     }
 }

@@ -84,6 +84,10 @@ public class BlueEnemyShooting : MonoBehaviour
 
     public void activateAim()
     {
+        ConstraintSource source = new ConstraintSource();
+        source.sourceTransform = aimObject.transform;
+        source.weight = 1;
+        aimConstraint.AddSource(source);
         line.enabled = true;
         aimConstraint.constraintActive = true;
         aimConstraint.rotationOffset = new Vector3 (0, 0, 0);

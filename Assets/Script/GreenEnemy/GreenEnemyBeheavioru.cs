@@ -17,6 +17,7 @@ public class GreenEnemyBeheavioru : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
