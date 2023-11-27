@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Escenas de prueba/Cuatro.unity
     guid: f0eee642590249f4585daf36b8c669e7
+  - enabled: 1
+    path: Assets/Scenes/Escena Final/Tutorial/Tutorial1.unity
+    guid: f66a1342914d5bd4690244e4b3914df2
+  - enabled: 1
+    path: Assets/Scenes/Escena Final/Tutorial/Tutorial2.unity
+    guid: 7a88c6110673c4b4e871f70ae9a533a5
   m_configObjects: {}
