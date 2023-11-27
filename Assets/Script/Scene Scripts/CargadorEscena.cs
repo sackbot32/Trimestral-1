@@ -109,4 +109,11 @@ public class CargadorEscena : MonoBehaviour
 
         return loadedScenes;
     }
+
+    public void LoadNewScene(string nuevaEscena)
+    {
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+        SceneManager.LoadScene(nuevaEscena);
+
+    }
 }
