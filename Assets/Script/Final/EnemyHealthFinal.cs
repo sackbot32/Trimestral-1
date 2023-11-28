@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealthFinal : MonoBehaviour
 {
     public string color;
     public int startingHealth;
@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public bool debugRes;
     public string[] debugColorChange;
     public int debugColorChangeNumber;
-    private MeshRenderer meshRenderer;
+    public SkinnedMeshRenderer meshRenderer;
     private Animator anim;
 
 
@@ -19,18 +19,11 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        if (GetComponent<MeshRenderer>() != null)
-        {
-           meshRenderer = GetComponent<MeshRenderer>();
-        }
         if(debugColorChange.Length > 0)
         {
             color = debugColorChange[debugColorChangeNumber];
         }
-        if (GetComponent<MeshRenderer>() != null)
-        {
-            changeColor(color);
-        }
+
         currentHealth = startingHealth;
     }
 
@@ -41,10 +34,6 @@ public class EnemyHealth : MonoBehaviour
         {
             debugColorChangeNumber = (debugColorChangeNumber + 1) % debugColorChange.Length;
             color = debugColorChange[debugColorChangeNumber];
-            if (GetComponent<MeshRenderer>() != null)
-            {
-                changeColor(color);
-            }
 
         }
     }
@@ -187,18 +176,21 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void changeColor(string color)
+    public void changeColor()
     {
         switch (color)
         {
             case "Red":
-                meshRenderer.material.color = new Color(1, 0, 0);
+                meshRenderer.material.SetColor("_BaseColor", new Color(1, 0, 0));
                 break;
             case "Blue":
-                meshRenderer.material.color = new Color(0, 0, 1);
+                meshRenderer.material.SetColor("_BaseColor", new Color(0, 0, 1));
                 break;
             case "Green":
-                meshRenderer.material.color = new Color(0, 1, 0);
+                meshRenderer.material.SetColor("_BaseColor", new Color(0, 1, 0));
+                break;
+            case "Null":
+                meshRenderer.material.SetColor("_BaseColor", new Color(0.4762838f, 0, 0.7075472f));
                 break;
 
             default:

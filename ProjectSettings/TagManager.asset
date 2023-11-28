@@ -10,6 +10,7 @@ TagManager:
   - EnemyAimBlue
   - SceneManager
   - GunBarrel
+  - SniperPos
   layers:
   - Default
   - TransparentFX

@@ -32,11 +32,7 @@ public class RedEnemyShooting : MonoBehaviour
     {
         if(canAim) 
         { 
-            //transform.LookAt(player.position);
-            //hip.transform.LookAt(player.position);
             gunPoint.transform.LookAt(player.position);
-            //myRotation.LookAt(player.position + aimOffset);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, myRotation.rotation, Time.deltaTime * 5);
             line.SetPosition(0, gunPoint.position);
 
             lastTimeShot += Time.deltaTime;

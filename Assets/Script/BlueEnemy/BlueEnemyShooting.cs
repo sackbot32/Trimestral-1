@@ -25,7 +25,6 @@ public class BlueEnemyShooting : MonoBehaviour
     {
         line.enabled = false;
         canAim = false;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         aimObject = GameObject.FindGameObjectWithTag("EnemyAimBlue").transform;
 
     }
@@ -35,8 +34,6 @@ public class BlueEnemyShooting : MonoBehaviour
     {
         if (canAim)
         {
-            //transform.LookAt(aimObject.position + aimOffset);
-            //transform.LookAt(player.position + aimOffset );
             gunPoint.transform.LookAt(aimObject.position);
             
             line.SetPosition(0, gunPoint.position);
@@ -51,13 +48,10 @@ public class BlueEnemyShooting : MonoBehaviour
                         lastTimeShot += Time.deltaTime;
                         if (lastTimeShot > shotDelay/2)
                         {
-                            print("sniper half way to shooting");
                             if (lastTimeShot > shotDelay - shotDelay/4)
                             {
-                                print("sniper close to shooting");
                                 if (lastTimeShot >= shotDelay)
                                 {
-                                    print("sniper hit player");
                                     hit.transform.GetComponent<PlayerHealth>().takeDamage(damage);
                                     lastTimeShot = 0;
                                 }

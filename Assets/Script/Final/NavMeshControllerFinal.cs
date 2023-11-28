@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMeshController : MonoBehaviour
+public class NavMeshControllerFinal : MonoBehaviour
 {
     public Transform target;
     private NavMeshAgent agent;
@@ -56,6 +56,10 @@ public class NavMeshController : MonoBehaviour
     public void StopIT()
     {
         agent.isStopped = true;
+    }
+    public void resumeIT()
+    {
+        agent.isStopped = false;
     }
 
     public bool thereYet()
