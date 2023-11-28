@@ -38,4 +38,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Escena Final/Tutorial/Tutorial2.unity
     guid: 7a88c6110673c4b4e871f70ae9a533a5
+  - enabled: 1
+    path: Assets/Scenes/Escena Final/En medio/Enmedio.unity
+    guid: 6db82173f28846c41ab3c8fca7372cfd
+  - enabled: 1
+    path: Assets/Scenes/Escena Final/En medio/Enmedio1.unity
+    guid: fc4aacc06d42de9458db7ac3036aaffc
+  - enabled: 1
+    path: Assets/Scenes/Escena Final/En medio/Enmedio2.unity
+    guid: 3c19adc0c1edfcd4a9d218ef6dc98fed
   m_configObjects: {}

@@ -136,8 +136,20 @@ PrefabInstance:
       value: SceneManagement (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
+      propertyPath: currentSceneList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
       propertyPath: startingSceneList.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
+      propertyPath: currentSceneList.Array.data[0]
+      value: Tutorial1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
+      propertyPath: currentSceneList.Array.data[1]
+      value: Tutorial2
       objectReference: {fileID: 0}
     - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
       propertyPath: startingSceneList.Array.data[0]
