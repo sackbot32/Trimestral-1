@@ -49,7 +49,8 @@ public class EnemyHealthFinal : MonoBehaviour
     {
 
         currentHealth -= calculateDamage(damage,hitColor);
-        healthBar.localScale = new Vector3(currentHealth/startingHealth,1,1);
+        float barSize = (float)currentHealth / (float)startingHealth;
+        healthBar.localScale = new Vector3(barSize,1,1);
 
         if(currentHealth <= 0)
         {

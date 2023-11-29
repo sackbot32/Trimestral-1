@@ -79,7 +79,6 @@ public class FinalEnemyShooting : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(realGunPoint.position, realGunPoint.forward, out hit, range, mask))
         {
-        print("llega a blue shooting");
             line.SetPosition(1, hit.point);
             if (hit.transform.CompareTag("Player"))
             {

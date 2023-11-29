@@ -8,7 +8,7 @@ public class FinalBossBeheavioru : MonoBehaviour
     private FinalEnemyShooting shooting;
     private NavMeshControllerFinal navMesh;
     private EnemyHealthFinal healthFinal;
-    private string[] colorList = {"Blue"};//{"Red","Blue","Green"};
+    private string[] colorList = {"Green"};//{"Red","Blue","Green"};
     private string currentColor;
     private Rigidbody rb;
     private Animator animator;
@@ -23,10 +23,12 @@ public class FinalBossBeheavioru : MonoBehaviour
         healthFinal = GetComponent<EnemyHealthFinal>();
         currentColor = "Null";
         healthFinal.changeColor();
-        StartCoroutine(ChangeAll());
-        //Activadores
+
+        ////Activadores
         navMesh.canWalk = true;
         shooting.activateAim();
+
+        StartCoroutine(ChangeAll());
     }
 
     // Update is called once per frame
@@ -99,16 +101,20 @@ public class FinalBossBeheavioru : MonoBehaviour
         switch (currentColor)
         {
             case "Red":
+                shooting.activateAim();
                 shooting.line.enabled = true;
                 shooting.canAim = true;
                 shooting.blue = false;
                 break;
             case "Blue":
+                shooting.activateAim();
+
                 shooting.line.enabled = true;
                 shooting.canAim = true;
                 shooting.blue = true;
                 break;
             case "Green":
+                shooting.deactivateAim();
                 shooting.line.enabled = false;
                 shooting.canAim = false;
                 break;

@@ -35,7 +35,7 @@ public class Explosion : MonoBehaviour
                 other.GetComponent<EnemyHealth>().GetHit(damage,"Red");
             } else
             {
-                other.transform.root.GetComponent<EnemyHealth>().GetHit(damage, "Red");
+                other.transform.GetComponent<EnemyHealthFinal>().GetHit(damage, "Red");
             }
         }
         if (other.GetComponent<Rigidbody>())

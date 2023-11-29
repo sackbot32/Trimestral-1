@@ -188,6 +188,13 @@ public class Shooting : MonoBehaviour
                     {
                         transform.root.gameObject.GetComponent<PlayerHealth>().Heal(weaponCharacteristic[chosenWeapon].healing);
                     }
+                } else if (hit.transform.gameObject.GetComponent<EnemyHealthFinal>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<EnemyHealthFinal>().GetHit(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
+                    if (hit.transform.gameObject.GetComponent<EnemyHealthFinal>().color == weaponCharacteristic[chosenWeapon].color)
+                    {
+                        transform.root.gameObject.GetComponent<PlayerHealth>().Heal(weaponCharacteristic[chosenWeapon].healing);
+                    }
                 }
                 else
                 {
