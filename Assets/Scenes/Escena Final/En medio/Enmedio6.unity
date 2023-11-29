@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 201921562}
   - component: {fileID: 201921561}
   - component: {fileID: 201921560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muro4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 954ce60f3b49171429c433adbbd8dc4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 227156848}
   - component: {fileID: 227156847}
   - component: {fileID: 227156846}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muro2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 954ce60f3b49171429c433adbbd8dc4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 394375019}
   - component: {fileID: 394375018}
   - component: {fileID: 394375017}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muro3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 954ce60f3b49171429c433adbbd8dc4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 397524415}
   - component: {fileID: 397524414}
   - component: {fileID: 397524413}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muro1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +781,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 954ce60f3b49171429c433adbbd8dc4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 404929531}
   - component: {fileID: 404929530}
   - component: {fileID: 404929529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pared2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2199,7 +2199,7 @@ GameObject:
   - component: {fileID: 597950823}
   - component: {fileID: 597950822}
   - component: {fileID: 597950828}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arco2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2256,7 +2256,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0b3948b79cce88d4b9be866e2219310f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2899,7 +2899,7 @@ GameObject:
   - component: {fileID: 1286058800}
   - component: {fileID: 1286058799}
   - component: {fileID: 1286058805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arco1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2956,7 +2956,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0b3948b79cce88d4b9be866e2219310f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3671,7 +3671,7 @@ GameObject:
   - component: {fileID: 1439296797}
   - component: {fileID: 1439296796}
   - component: {fileID: 1439296795}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muro5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3719,7 +3719,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 954ce60f3b49171429c433adbbd8dc4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3779,7 +3779,7 @@ GameObject:
   - component: {fileID: 1793050106}
   - component: {fileID: 1793050105}
   - component: {fileID: 1793050111}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3836,7 +3836,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 118391f9fca2de24b875173464ad0f9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5363,7 +5363,7 @@ GameObject:
   - component: {fileID: 1931726913}
   - component: {fileID: 1931726912}
   - component: {fileID: 1931726911}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pared1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6594,8 +6594,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 227156849}
   - {fileID: 397524416}
+  - {fileID: 227156849}
   - {fileID: 394375020}
   - {fileID: 201921563}
   - {fileID: 1439296798}
