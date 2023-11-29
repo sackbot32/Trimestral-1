@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class NavMeshControllerFinal : MonoBehaviour
 {
     public Transform target;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private Animator anim;
     private Rigidbody rb;
     public bool canWalk;

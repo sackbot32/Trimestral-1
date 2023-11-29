@@ -12,6 +12,7 @@ public class EnemyHealthFinal : MonoBehaviour
     public int debugColorChangeNumber;
     public SkinnedMeshRenderer meshRenderer;
     private Animator anim;
+    public Transform healthBar;
 
 
 
@@ -48,7 +49,7 @@ public class EnemyHealthFinal : MonoBehaviour
     {
 
         currentHealth -= calculateDamage(damage,hitColor);
-        
+        healthBar.localScale = new Vector3(currentHealth/startingHealth,1,1);
 
         if(currentHealth <= 0)
         {

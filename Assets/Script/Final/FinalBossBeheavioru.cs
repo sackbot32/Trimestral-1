@@ -8,7 +8,7 @@ public class FinalBossBeheavioru : MonoBehaviour
     private FinalEnemyShooting shooting;
     private NavMeshControllerFinal navMesh;
     private EnemyHealthFinal healthFinal;
-    private string[] colorList = {"Red","Blue","Green"};
+    private string[] colorList = {"Blue"};//{"Red","Blue","Green"};
     private string currentColor;
     private Rigidbody rb;
     private Animator animator;
@@ -26,6 +26,7 @@ public class FinalBossBeheavioru : MonoBehaviour
         StartCoroutine(ChangeAll());
         //Activadores
         navMesh.canWalk = true;
+        shooting.activateAim();
     }
 
     // Update is called once per frame
@@ -34,6 +35,7 @@ public class FinalBossBeheavioru : MonoBehaviour
         switch (currentColor)
         {
             case "Red":
+            
                 if (navMesh.canWalk)
                 {
                     navMesh.SetTarget(navMesh.target.position);
@@ -49,11 +51,16 @@ public class FinalBossBeheavioru : MonoBehaviour
                 }
                 break;
             case "Blue":
-                navMesh.StopIT();
+                animator.SetBool("Running", false);
+                if (navMesh.enabled)
+                {
+                    navMesh.StopIT();
+                }
                 break;
             case "Green":
                 if (navMesh.canWalk)
                 {
+                    navMesh.resumeIT();
                     navMesh.SetTarget(navMesh.target.position);
                 }
                 if (navMesh.canWalk && !navMesh.thereYet())
@@ -92,14 +99,17 @@ public class FinalBossBeheavioru : MonoBehaviour
         switch (currentColor)
         {
             case "Red":
+                shooting.line.enabled = true;
                 shooting.canAim = true;
                 shooting.blue = false;
                 break;
             case "Blue":
+                shooting.line.enabled = true;
                 shooting.canAim = true;
                 shooting.blue = true;
                 break;
             case "Green":
+                shooting.line.enabled = false;
                 shooting.canAim = false;
                 break;
 
@@ -137,12 +147,18 @@ public class FinalBossBeheavioru : MonoBehaviour
         switch (currentColor)
         {
             case "Red":
+                navMesh.agent.enabled = true;
+                navMesh.enabled = true;
                 navMesh.target = snipingPos[Random.Range(0,snipingPos.Length)].transform;
                 break;
             case "Blue":
+                navMesh.agent.enabled = false;
+                navMesh.enabled = false;
                 transform.position = snipingPos[Random.Range(0, snipingPos.Length)].transform.position;
                 break;
             case "Green":
+                navMesh.agent.enabled = true;
+                navMesh.enabled = true;
                 navMesh.target = GameObject.FindGameObjectWithTag("Player").transform;
                 break;
 

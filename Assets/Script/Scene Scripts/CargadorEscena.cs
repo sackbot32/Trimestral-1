@@ -31,7 +31,6 @@ public class CargadorEscena : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             if (!first)
             {
-                print("llega aqui");
                 CargarlasEscenas(startingSceneList);
                 first = true;
             }
@@ -46,13 +45,11 @@ public class CargadorEscena : MonoBehaviour
     }
     public void CargandoEscena()
     {
-        Debug.Log("Loading New Scene");
     }
     public void MasDeUnaEscena()
     {
         if (sceneCount > 1)
         {
-            Debug.Log("More than one scene loaded")
 ;       }
     }
 
@@ -61,7 +58,6 @@ public class CargadorEscena : MonoBehaviour
         currentSceneList = listaDeEscenas;
         foreach (Scene escenaActiva in getAllActiveScenes())
         {
-            print("tenemos escenas activas");
             bool estaEnLaLista = false;
             foreach (string escena in listaDeEscenas)
             {
@@ -73,7 +69,6 @@ public class CargadorEscena : MonoBehaviour
             if (!estaEnLaLista && escenaActiva.name != escenaPrincipal)
             {
                 SceneManager.UnloadSceneAsync(escenaActiva);
-                print("eliminamos escena" + escenaActiva.name);
             }
         }
         foreach (string escena in listaDeEscenas)

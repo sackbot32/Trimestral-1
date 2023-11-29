@@ -8,6 +8,7 @@ public class FinalEnemyShooting : MonoBehaviour
     public float lastTimeShot;
     public float rate;
     public int damage;
+    public Transform realGunPoint;
     public Transform gunPoint;
     public int range;
     public LineRenderer line;
@@ -70,15 +71,15 @@ public class FinalEnemyShooting : MonoBehaviour
 
     private void BlueShooting()
     {
+        realGunPoint.transform.LookAt(aimObjectBlue.position);
 
-        gunPoint.transform.LookAt(aimObjectBlue.position);
-
-        line.SetPosition(0, gunPoint.position);
+        line.SetPosition(0, realGunPoint.position);
 
 
         RaycastHit hit;
-        if (Physics.Raycast(gunPoint.position, gunPoint.forward, out hit, range, mask))
+        if (Physics.Raycast(realGunPoint.position, realGunPoint.forward, out hit, range, mask))
         {
+        print("llega a blue shooting");
             line.SetPosition(1, hit.point);
             if (hit.transform.CompareTag("Player"))
             {
@@ -108,20 +109,20 @@ public class FinalEnemyShooting : MonoBehaviour
         }
         else
         {
-            line.SetPosition(1, /*offset.localToWorldMatrix.GetPosition() + */gunPoint.forward * range);
+            line.SetPosition(1, realGunPoint.forward * range);
         }
     }
 
     private void RedShooting()
     {
-        gunPoint.transform.LookAt(aimObjectRed.position);
-        line.SetPosition(0, gunPoint.position);
+        realGunPoint.transform.LookAt(aimObjectRed.position);
+        line.SetPosition(0, realGunPoint.position);
 
         lastTimeShot += Time.deltaTime;
         if (lastTimeShot > rate)
         {
             RaycastHit hit;
-            if (Physics.Raycast(gunPoint.localToWorldMatrix.GetPosition(), gunPoint.forward, out hit, range, mask))
+            if (Physics.Raycast(realGunPoint.localToWorldMatrix.GetPosition(), realGunPoint.forward, out hit, range, mask))
             {
                 line.SetPosition(1, hit.point);
                 if (hit.transform.CompareTag("Player"))
@@ -141,7 +142,7 @@ public class FinalEnemyShooting : MonoBehaviour
             }
             else
             {
-                line.SetPosition(1, gunPoint.localToWorldMatrix.GetPosition() + gunPoint.forward * range);
+                line.SetPosition(1, realGunPoint.localToWorldMatrix.GetPosition() + realGunPoint.forward * range);
             }
             line.enabled = enabled;
             lastTimeShot = 0;
