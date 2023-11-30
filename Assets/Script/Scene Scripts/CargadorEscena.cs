@@ -108,7 +108,9 @@ public class CargadorEscena : MonoBehaviour
     public void LoadNewScene(string nuevaEscena)
     {
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+        SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetActiveScene());
         SceneManager.LoadScene(nuevaEscena);
+
 
     }
 }
