@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783608852658822977}
   - component: {fileID: 2308754897013152274}
-  - component: {fileID: 7027924177870218794}
+  - component: {fileID: 4152127560124476425}
   m_Layer: 0
   m_Name: AreaOfRed
   m_TagString: Untagged
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redEnemyBehaviours:
   - {fileID: 0}
---- !u!135 &7027924177870218794
-SphereCollider:
+--- !u!65 &4152127560124476425
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -66,5 +66,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

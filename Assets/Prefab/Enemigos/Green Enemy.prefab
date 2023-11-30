@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: Green
-  startingHealth: 80
+  startingHealth: 100
   debugRes: 0
   debugColorChange:
   - Green

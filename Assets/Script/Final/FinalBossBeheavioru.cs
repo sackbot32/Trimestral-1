@@ -34,7 +34,7 @@ public class FinalBossBeheavioru : MonoBehaviour
         healthFinal.changeColor();
         attack.enabled = false;
 
-        StartCoroutine(ChangeAll());
+        //StartCoroutine(ChangeAll());
     }
 
     // Update is called once per frame

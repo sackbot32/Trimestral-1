@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastTimeShot: 0
-  rate: 10
+  rate: 2
   damage: 25
   gunPoint: {fileID: 2920657135381412371}
   range: 9999
@@ -412,7 +412,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 136
-  shotDelay: 20
+  shotDelay: 5
 --- !u!135 &6299617358989050061
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -188,7 +188,8 @@ public class Shooting : MonoBehaviour
                     {
                         transform.root.gameObject.GetComponent<PlayerHealth>().Heal(weaponCharacteristic[chosenWeapon].healing);
                     }
-                } else if (hit.transform.gameObject.GetComponent<EnemyHealthFinal>() != null)
+                } 
+                else if (hit.transform.gameObject.GetComponent<EnemyHealthFinal>() != null)
                 {
                     hit.transform.gameObject.GetComponent<EnemyHealthFinal>().GetHit(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
                     if (hit.transform.gameObject.GetComponent<EnemyHealthFinal>().color == weaponCharacteristic[chosenWeapon].color)
@@ -196,9 +197,9 @@ public class Shooting : MonoBehaviour
                         transform.root.gameObject.GetComponent<PlayerHealth>().Heal(weaponCharacteristic[chosenWeapon].healing);
                     }
                 }
-                else
+                if (hit.transform.gameObject.GetComponent<ColorWall>() != null)
                 {
-                    hit.transform.root.GetComponent<EnemyHealth>().GetHit(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
+                    hit.transform.gameObject.GetComponent<ColorWall>().takeDamage(weaponCharacteristic[chosenWeapon].damage, weaponCharacteristic[chosenWeapon].color);
                 }
             }
             if(weaponCharacteristic[chosenWeapon].color == "Red")
