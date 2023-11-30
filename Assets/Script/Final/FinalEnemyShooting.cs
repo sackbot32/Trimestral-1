@@ -22,6 +22,7 @@ public class FinalEnemyShooting : MonoBehaviour
     public LayerMask mask;
     public float shotDelay;
     public bool blue;
+    public Transform blueHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +44,7 @@ public class FinalEnemyShooting : MonoBehaviour
                 BlueShooting();
             } else
             {
+                blueHit = null;
                 RedShooting();
             }
 
@@ -111,6 +113,9 @@ public class FinalEnemyShooting : MonoBehaviour
             line.SetPosition(1, realGunPoint.forward * range);
         }
     }
+
+
+
 
     private void RedShooting()
     {

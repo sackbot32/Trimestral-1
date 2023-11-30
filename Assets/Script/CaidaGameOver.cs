@@ -13,6 +13,7 @@ public class CaidaGameOver : MonoBehaviour
         {
             playerHealth = other.GetComponent<PlayerHealth>();
             playerHealth.takeDamage(damage);
+
         }
         if (other.tag == "Enemy")
         {

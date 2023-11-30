@@ -148,6 +148,7 @@ public class EnemyHealthFinal : MonoBehaviour
 
     IEnumerator Death()
     {
+        //Como es el jefe deberiamos añadir algo para terminar el juego
         switch (color)
         {
             case "Red":

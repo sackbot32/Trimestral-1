@@ -5,14 +5,23 @@ using UnityEngine;
 
 public class FinalBossBeheavioru : MonoBehaviour
 {
+    public float timeBetweenChange;
+    public int redDamage;
+    public int blueDamage;
     private FinalEnemyShooting shooting;
     private NavMeshControllerFinal navMesh;
     private EnemyHealthFinal healthFinal;
-    private string[] colorList = {"Green"};//{"Red","Blue","Green"};
+    private string[] colorList = {"Red","Blue","Green"};
     private string currentColor;
     private Rigidbody rb;
     private Animator animator;
     private GameObject[] snipingPos;
+    public Transform sword;
+    public Vector3 originalPos;
+    public Vector3 attackPos;
+    public Quaternion originalRot;
+    public Quaternion attackRot;
+    public Collider attack;
     void Start()
     {
         snipingPos = GameObject.FindGameObjectsWithTag("SniperPos");
@@ -23,10 +32,7 @@ public class FinalBossBeheavioru : MonoBehaviour
         healthFinal = GetComponent<EnemyHealthFinal>();
         currentColor = "Null";
         healthFinal.changeColor();
-
-        ////Activadores
-        navMesh.canWalk = true;
-        shooting.activateAim();
+        attack.enabled = false;
 
         StartCoroutine(ChangeAll());
     }
@@ -82,9 +88,19 @@ public class FinalBossBeheavioru : MonoBehaviour
             default:
                 break;
         }
+
+        if (animator.GetBool("Attack"))
+        {
+            sword.localPosition = attackPos;
+            sword.localRotation = attackRot;
+        } else
+        {
+            sword.localPosition = originalPos;
+            sword.localRotation = originalRot;
+        }
     }
 
-    IEnumerator ChangeAll()
+    public IEnumerator ChangeAll()
     {
         while(true)
         {
@@ -92,7 +108,7 @@ public class FinalBossBeheavioru : MonoBehaviour
             ChangeAim();
             ChangeBodyColor();
             ChangeTarget();
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(timeBetweenChange);
         }
     }
 
@@ -101,12 +117,14 @@ public class FinalBossBeheavioru : MonoBehaviour
         switch (currentColor)
         {
             case "Red":
+                shooting.damage = redDamage;
                 shooting.activateAim();
                 shooting.line.enabled = true;
                 shooting.canAim = true;
                 shooting.blue = false;
                 break;
             case "Blue":
+                shooting.damage = blueDamage;
                 shooting.activateAim();
 
                 shooting.line.enabled = true;
@@ -172,6 +190,15 @@ public class FinalBossBeheavioru : MonoBehaviour
             default:
                 break;
         }
+    }
+    public void ActivateAttack()
+    {
+        attack.enabled = true;
+    }
+
+    public void DeActivateAttack()
+    {
+        attack.enabled = false;
     }
 
 }
