@@ -43,7 +43,7 @@ public class FinalBossBeheavioru : MonoBehaviour
         switch (currentColor)
         {
             case "Red":
-            
+                animator.SetBool("Attack", false);
                 if (navMesh.canWalk)
                 {
                     navMesh.SetTarget(navMesh.target.position);
@@ -59,6 +59,7 @@ public class FinalBossBeheavioru : MonoBehaviour
                 }
                 break;
             case "Blue":
+                animator.SetBool("Attack", false);
                 animator.SetBool("Running", false);
                 if (navMesh.enabled)
                 {
