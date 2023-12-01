@@ -113,4 +113,8 @@ public class CargadorEscena : MonoBehaviour
 
 
     }
+    public void SalirDelJuego()
+    {
+        Application.Quit();
+    }
 }
