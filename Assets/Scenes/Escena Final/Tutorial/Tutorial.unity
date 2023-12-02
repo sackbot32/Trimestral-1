@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
       propertyPath: escenaPrincipal
-      value: EscenaPruebaPrincipal
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
       propertyPath: currentSceneList.Array.size

@@ -30,12 +30,29 @@ public class EnemyHealthFinal : MonoBehaviour
 
     private void Update()
     {
-        //Debug Change Color
-        if (Input.GetKeyDown(KeyCode.R) && debugRes)
+        switch (color)
         {
-            debugColorChangeNumber = (debugColorChangeNumber + 1) % debugColorChange.Length;
-            color = debugColorChange[debugColorChangeNumber];
+            case "Red":
+                if (meshRenderer.material.GetColor("_BaseColor") != new Color(1, 0, 0))
+                {
+                    meshRenderer.material.SetColor("_BaseColor", meshRenderer.material.GetColor("_BaseColor") - new Color(0, 0.5f, 0.5f) * Time.deltaTime);
+                }
+                break;
+            case "Blue":
+                if (meshRenderer.material.GetColor("_BaseColor") != new Color(0, 0, 1))
+                {
+                    meshRenderer.material.SetColor("_BaseColor", meshRenderer.material.GetColor("_BaseColor") - new Color(0.5f, 0.5f, 0) * Time.deltaTime);
+                }
+                break;
+            case "Green":
+                if (meshRenderer.material.GetColor("_BaseColor") != new Color(0, 1, 0))
+                {
+                    meshRenderer.material.SetColor("_BaseColor", meshRenderer.material.GetColor("_BaseColor") - new Color(0.5f, 0, 0.5f) * Time.deltaTime);
+                }
+                break;
 
+            default:
+                break;
         }
     }
 
@@ -49,6 +66,23 @@ public class EnemyHealthFinal : MonoBehaviour
     {
 
         currentHealth -= calculateDamage(damage,hitColor);
+
+        switch (color)
+        {
+            case "Red":
+                meshRenderer.material.SetColor("_BaseColor", new Color(1, 0.5f, 0.5f));
+                break;
+            case "Blue":
+                meshRenderer.material.SetColor("_BaseColor", new Color(0.5f, 0.5f, 1));
+                break;
+            case "Green":
+                meshRenderer.material.SetColor("_BaseColor", new Color(0.5f, 1, 0.5f));
+                break;
+
+            default:
+                break;
+        }
+
         float barSize = (float)currentHealth / (float)startingHealth;
         healthBar.localScale = new Vector3(barSize,1,1);
 
@@ -176,7 +210,8 @@ public class EnemyHealthFinal : MonoBehaviour
         }
         anim.SetBool("Dead",true);
         yield return new WaitForSeconds(1.1f);
-        Destroy(gameObject);
+        Cursor.lockState = CursorLockMode.None;
+        CargadorEscena.cE.LoadNewScene("Creditos");
     }
 
     public void changeColor()

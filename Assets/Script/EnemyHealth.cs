@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public bool debugRes;
     public string[] debugColorChange;
     public int debugColorChangeNumber;
-    private MeshRenderer meshRenderer;
+    public SkinnedMeshRenderer meshRenderer;
     private Animator anim;
 
 
@@ -19,10 +19,6 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        if (GetComponent<MeshRenderer>() != null)
-        {
-           meshRenderer = GetComponent<MeshRenderer>();
-        }
         if(debugColorChange.Length > 0)
         {
             color = debugColorChange[debugColorChangeNumber];
@@ -37,15 +33,40 @@ public class EnemyHealth : MonoBehaviour
     private void Update()
     {
         //Debug Change Color
-        if (Input.GetKeyDown(KeyCode.R) && debugRes)
-        {
-            debugColorChangeNumber = (debugColorChangeNumber + 1) % debugColorChange.Length;
-            color = debugColorChange[debugColorChangeNumber];
-            if (GetComponent<MeshRenderer>() != null)
-            {
-                changeColor(color);
-            }
+        //if (Input.GetKeyDown(KeyCode.R) && debugRes)
+        //{
+        //    debugColorChangeNumber = (debugColorChangeNumber + 1) % debugColorChange.Length;
+        //    color = debugColorChange[debugColorChangeNumber];
+        //    if (GetComponent<MeshRenderer>() != null)
+        //    {
+        //        changeColor(color);
+        //    }
 
+        //}
+
+        switch (color)
+        {
+            case "Red":
+                    if(meshRenderer.material.GetColor("_BaseColor") != new Color(1, 0, 0))
+                    {
+                        meshRenderer.material.SetColor("_BaseColor", meshRenderer.material.GetColor("_BaseColor") - new Color(0, 0.5f, 0.5f) * Time.deltaTime);
+                    }
+                break;
+            case "Blue":
+                if (meshRenderer.material.GetColor("_BaseColor") != new Color(0, 0, 1))
+                {
+                    meshRenderer.material.SetColor("_BaseColor", meshRenderer.material.GetColor("_BaseColor") - new Color(0.5f, 0.5f, 0) * Time.deltaTime);
+                }
+                break;
+            case "Green":
+                if (meshRenderer.material.GetColor("_BaseColor") != new Color(0, 1, 0))
+                {
+                    meshRenderer.material.SetColor("_BaseColor", meshRenderer.material.GetColor("_BaseColor") - new Color(0.5f, 0, 0.5f) *Time.deltaTime);
+                }
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -57,11 +78,26 @@ public class EnemyHealth : MonoBehaviour
 
     public void GetHit(int damage, string hitColor)
     {
-
+        float whiteTer = (float)calculateDamage(damage, hitColor) / (float)damage;
         currentHealth -= calculateDamage(damage,hitColor);
-        
 
-        if(currentHealth <= 0)
+        switch (color)
+        {
+            case "Red":
+                meshRenderer.material.SetColor("_BaseColor", new Color(1,0.5f,0.5f));
+                break;
+            case "Blue":
+                meshRenderer.material.SetColor("_BaseColor", new Color(0.5f, 0.5f, 1));
+                break;
+            case "Green":
+                meshRenderer.material.SetColor("_BaseColor", new Color(0.5f, 1, 0.5f));
+                break;
+
+            default:
+                break;
+        }
+
+        if (currentHealth <= 0)
         {
             if (debugRes)
             {

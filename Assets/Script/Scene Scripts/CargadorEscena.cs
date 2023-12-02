@@ -107,8 +107,24 @@ public class CargadorEscena : MonoBehaviour
 
     public void LoadNewScene(string nuevaEscena)
     {
+        if(GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetActiveScene());
+        }
+        if (GameObject.FindGameObjectWithTag("EnemyAim") != null)
+        {
+            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("EnemyAim"), SceneManager.GetActiveScene());
+        }
+        if (GameObject.FindGameObjectWithTag("EnemyAimBlue") != null)
+        {
+            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("EnemyAimBlue"), SceneManager.GetActiveScene());
+        }
+        if (GameObject.FindGameObjectWithTag("SceneManager") != null)
+        {
+            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("SceneManager"), SceneManager.GetActiveScene());
+        }
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
-        SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetActiveScene());
+        Time.timeScale = 1;
         SceneManager.LoadScene(nuevaEscena);
 
 
