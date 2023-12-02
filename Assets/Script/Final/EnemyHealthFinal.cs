@@ -13,6 +13,8 @@ public class EnemyHealthFinal : MonoBehaviour
     public SkinnedMeshRenderer meshRenderer;
     private Animator anim;
     public Transform healthBar;
+    public Light[] lightsToChangeColor;
+    public Transform lightFollowBoss;
 
 
 
@@ -30,6 +32,7 @@ public class EnemyHealthFinal : MonoBehaviour
 
     private void Update()
     {
+        lightFollowBoss.LookAt(transform);
         switch (color)
         {
             case "Red":
@@ -220,12 +223,24 @@ public class EnemyHealthFinal : MonoBehaviour
         {
             case "Red":
                 meshRenderer.material.SetColor("_BaseColor", new Color(1, 0, 0));
+                foreach (Light item in lightsToChangeColor)
+                {
+                    item.color = new Color(1, 0, 0);
+                }
                 break;
             case "Blue":
                 meshRenderer.material.SetColor("_BaseColor", new Color(0, 0, 1));
+                foreach (Light item in lightsToChangeColor)
+                {
+                    item.color = new Color(0, 0, 1);
+                }
                 break;
             case "Green":
                 meshRenderer.material.SetColor("_BaseColor", new Color(0, 1, 0));
+                foreach (Light item in lightsToChangeColor)
+                {
+                    item.color = new Color(0, 1, 0);
+                }
                 break;
             case "Null":
                 meshRenderer.material.SetColor("_BaseColor", new Color(0.4762838f, 0, 0.7075472f));

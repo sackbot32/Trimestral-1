@@ -31,7 +31,6 @@ public class FinalBossBeheavioru : MonoBehaviour
         navMesh = GetComponent<NavMeshControllerFinal>();
         healthFinal = GetComponent<EnemyHealthFinal>();
         currentColor = "Null";
-        healthFinal.changeColor();
         attack.enabled = false;
 
         //StartCoroutine(ChangeAll());
