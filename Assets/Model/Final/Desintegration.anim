@@ -73,7 +73,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._AlphaClip
-    path: Armature/mixamorig:Hips/mixamorig:Spine/Pistol/pistol
+    path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Espada
     classID: 23
     script: {fileID: 0}
     flags: 16
@@ -95,7 +95,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3773222818
+      path: 4053625405
       attribute: 2247323815
       script: {fileID: 0}
       typeID: 23
@@ -181,7 +181,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._AlphaClip
-    path: Armature/mixamorig:Hips/mixamorig:Spine/Pistol/pistol
+    path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/Espada
     classID: 23
     script: {fileID: 0}
     flags: 16
