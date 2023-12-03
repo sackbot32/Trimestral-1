@@ -86,6 +86,21 @@ public class Shooting : MonoBehaviour
             gunLine.SetPosition(0, transform.position);
             weaponCharacteristic[chosenWeapon].lastTimeShot = 0;
             muzzle.Play();
+            switch (weaponCharacteristic[chosenWeapon].color)
+            {
+                case "Red":
+                    backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0.8f, 0.8f));
+                    break;
+                case "Blue":
+                    backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.5f, 0.5f, 1));
+                    break;
+                case "Green":
+                    backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.5f, 1, 0.5f));
+                    break;
+
+                default:
+                    break;
+            }
             if (weaponCharacteristic[chosenWeapon].multiShot)
             {
                 for (int i = 0; i < howManyMulti; i++)
@@ -129,6 +144,49 @@ public class Shooting : MonoBehaviour
         } else
         {
             player.walkSpeed = startingSpeed;
+        }
+        switch (weaponCharacteristic[chosenWeapon].color)
+        {
+            case "Red":
+                if (backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.GetColor("_BaseColor") != new Color(1, 0, 0))
+                {
+                    if(weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate)
+                    {
+
+                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0, 0));
+                    } else
+                    {
+                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0.8f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate), 0.8f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate)));
+                    }
+                }
+                break;
+            case "Blue":
+                if (backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.GetColor("_BaseColor") != new Color(0, 0, 1))
+                {
+                    if (weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate)
+                    {
+                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0, 0, 1));
+                    } else
+                    {
+                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.5f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate), 0.5f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate), 1));
+                    }
+                }
+                break;
+            case "Green":
+                if (backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.GetColor("_BaseColor") != new Color(0, 1, 0))
+                {
+                    if (weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate)
+                    {
+                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0, 1, 0));
+                    } else
+                    {
+                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.5f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate), 1, 0.5f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate)));
+                    }
+                }
+                break;
+
+            default:
+                break;
         }
 
     }
