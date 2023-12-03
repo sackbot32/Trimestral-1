@@ -31,6 +31,7 @@ public class Shooting : MonoBehaviour
     private ParticleSystem muzzle;
     public Animator backpack;
     public InputActionReference shoot;
+    public GameObject particle;
 
 
     private void Start()
@@ -266,10 +267,12 @@ public class Shooting : MonoBehaviour
             
 
             gunLine.SetPosition(1, hit.point);
+            CreateLight(hit.point);
         }
         else
         {
             gunLine.SetPosition(1, transform.position + transform.forward * weaponCharacteristic[chosenWeapon].range);
+            CreateLight(transform.position + transform.forward * weaponCharacteristic[chosenWeapon].range);
         }
     }
 
@@ -310,5 +313,10 @@ public class Shooting : MonoBehaviour
         {
             backpack.SetBool("ChangingWeapon", false);
         }
+    }
+
+    private void CreateLight(Vector3 lightPosition)
+    {
+        Instantiate(particle, lightPosition, Quaternion.identity);
     }
 }

@@ -145,6 +145,10 @@ PrefabInstance:
       value: R para reintentar
       objectReference: {fileID: 0}
     - target: {fileID: 6268975098959821692, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 5585671604984661021, guid: 8cc119be9974d75419ddd72bdf4f838d, type: 3}
+    - target: {fileID: 6268975098959821692, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: weaponCharacteristic.Array.data[2].range
       value: 999999
       objectReference: {fileID: 0}
