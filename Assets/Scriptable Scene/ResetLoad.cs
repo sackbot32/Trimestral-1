@@ -14,7 +14,6 @@ public class ResetLoad : MonoBehaviour
         tutorial.SceneList = escenaTutorial;
         string[] escenaMedio = { "Enmedio1", "Enmedio2" };
         enMedio.SceneList = escenaMedio;
-        string[] escenaFinal = { "EscenaFinal" };
-        final.SceneList = escenaFinal;
+        final.SceneList = null;
     }
 }

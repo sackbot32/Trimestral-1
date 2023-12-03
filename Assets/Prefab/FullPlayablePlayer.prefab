@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384737, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 56fdefcfea563374d948dcb205ef5cab, type: 2}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.84
@@ -116,6 +120,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384741, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_Name
       value: FullPlayablePlayer
@@ -135,6 +143,14 @@ PrefabInstance:
     - target: {fileID: 6099013445022458079, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_Text
       value: R para reintentar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268975098959821692, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: weaponCharacteristic.Array.data[2].range
+      value: 999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268975098959821692, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: weaponCharacteristic.Array.data[2].damage
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 7847275041072287805, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_Text

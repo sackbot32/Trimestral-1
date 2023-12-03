@@ -50,6 +50,14 @@ public class PlayerHealth : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+        if(Time.timeScale > 0) 
+        {
+            gun.enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            pausaMenu.SetActive(false);
+            controller.cameraCanMove = true;
+        }
+
         //Aqui iria revivir al morir, comprobar si el jugador tiene 0 de vida
         if (revive.action.WasPerformedThisFrame() && currentHealth <= 0)
         {
