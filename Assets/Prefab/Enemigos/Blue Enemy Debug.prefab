@@ -185,7 +185,6 @@ GameObject:
   - component: {fileID: 2050990407699400266}
   - component: {fileID: 9008291722667796007}
   - component: {fileID: 3084300871645231624}
-  - component: {fileID: 2618250211852334397}
   m_Layer: 6
   m_Name: gun
   m_TagString: Untagged
@@ -261,24 +260,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2618250211852334397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4746680955589916831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &5240591190177891141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,33 +1509,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2453550708452717748, guid: 1e60c00b8899dec42af0b45889b95f07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1998085466769448340}
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 1e60c00b8899dec42af0b45889b95f07, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 465091636917590827}
   m_SourcePrefab: {fileID: 100100000, guid: 1e60c00b8899dec42af0b45889b95f07, type: 3}
---- !u!1 &172238915989896939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 1e60c00b8899dec42af0b45889b95f07, type: 3}
-  m_PrefabInstance: {fileID: 715942519620324495}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &465091636917590827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172238915989896939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!4 &963128925685155822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8884984920518210719, guid: 1e60c00b8899dec42af0b45889b95f07, type: 3}

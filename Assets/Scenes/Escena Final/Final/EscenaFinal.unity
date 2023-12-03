@@ -17379,11 +17379,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7901ff8d300694844a299b865da22578, type: 3}
---- !u!1 &1095579951 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c304b6d7dd39c747a70e036d3590d60, type: 3}
-  m_PrefabInstance: {fileID: 1228191703}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1099008761
 Mesh:
   m_ObjectHideFlags: 0
@@ -17791,9 +17786,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1228191704}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 0194cf9971099b54c8c008cb425526ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1128558079}
     - targetCorrespondingSourceObject: {fileID: -7657966619581158213, guid: 0194cf9971099b54c8c008cb425526ea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 384212067}
@@ -17808,29 +17800,6 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8417361359673230750, guid: 0194cf9971099b54c8c008cb425526ea, type: 3}
   m_PrefabInstance: {fileID: 1128558075}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1128558078 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 0194cf9971099b54c8c008cb425526ea, type: 3}
-  m_PrefabInstance: {fileID: 1128558075}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1128558079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128558078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!43 &1141254312
 Mesh:
   m_ObjectHideFlags: 0
@@ -21564,34 +21533,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c304b6d7dd39c747a70e036d3590d60, type: 3}
       insertIndex: -1
       addedObject: {fileID: 252225331}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c304b6d7dd39c747a70e036d3590d60, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1228191707}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c304b6d7dd39c747a70e036d3590d60, type: 3}
 --- !u!4 &1228191704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c304b6d7dd39c747a70e036d3590d60, type: 3}
   m_PrefabInstance: {fileID: 1228191703}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1228191707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095579951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!43 &1238443126
 Mesh:
   m_ObjectHideFlags: 0
