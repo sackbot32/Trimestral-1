@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7370212500669395067}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -123,6 +123,7 @@ MonoBehaviour:
   maxSize: 10
   howMuchGrow: 40
   force: 100
+  bum: {fileID: 8714244275622671896, guid: 77f01deb6302f734a803d9313b70fbf6, type: 3}
 --- !u!54 &28012148152204065
 Rigidbody:
   m_ObjectHideFlags: 0

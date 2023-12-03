@@ -9749,8 +9749,9 @@ GameObject:
   - component: {fileID: 8714244275622671901}
   - component: {fileID: 8714244275622671898}
   - component: {fileID: 8714244275622671899}
+  - component: {fileID: 2466351402715540187}
   m_Layer: 0
-  m_Name: SmokeyExplosion
+  m_Name: Bum
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9766,8 +9767,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8714244274982309032}
   - {fileID: 8714244276621214661}
@@ -10031,7 +10032,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.22
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14643,6 +14644,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2466351402715540187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8714244275622671896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8673ae1864e73e9419c58e67539e74e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8714244275726771928
 GameObject:
   m_ObjectHideFlags: 0
@@ -14660,7 +14673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8714244275726771931
 Transform:
   m_ObjectHideFlags: 0
@@ -14930,7 +14943,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 16.4
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -19558,7 +19571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8714244275996283150
 Transform:
   m_ObjectHideFlags: 0
@@ -19828,7 +19841,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.71
+      scalar: 0.9275
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -24456,7 +24469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8714244276197082535
 Transform:
   m_ObjectHideFlags: 0
@@ -24726,7 +24739,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.125
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -29354,7 +29367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8714244276621214661
 Transform:
   m_ObjectHideFlags: 0
@@ -29627,7 +29640,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.06
+      scalar: 0.265
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -44331,7 +44344,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6.54
+      scalar: 0.75
       minScalar: 1
       maxCurve:
         serializedVersion: 2

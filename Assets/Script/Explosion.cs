@@ -8,10 +8,12 @@ public class Explosion : MonoBehaviour
     public float maxSize;
     public float howMuchGrow;
     public float force;
+    public GameObject bum;
+    private GameObject selfBum;
     // Start is called before the first frame update
     void Start()
     {
-        
+        selfBum = Instantiate(bum, transform);
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class Explosion : MonoBehaviour
             transform.localScale += new Vector3(howMuchGrow,howMuchGrow,howMuchGrow)*Time.deltaTime;
         } else
         {
+            selfBum.transform.parent = null;
             Destroy(gameObject);
         }
     }

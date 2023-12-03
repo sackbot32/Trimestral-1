@@ -32,6 +32,7 @@ public class Shooting : MonoBehaviour
     public Animator backpack;
     public InputActionReference shoot;
     public GameObject particle;
+    public bool recharging;
 
 
     private void Start()
@@ -45,6 +46,7 @@ public class Shooting : MonoBehaviour
         muzzle.Stop();
         muzzle.Clear();
         weaponCharacteristic[chosenWeapon].lastTimeShot = weaponCharacteristic[chosenWeapon].rate;
+        recharging = false;
         changeColor(weaponCharacteristic[chosenWeapon].color);
         layerMask = LayerMask.GetMask("Shootable", "Enemy");
     }
@@ -90,13 +92,14 @@ public class Shooting : MonoBehaviour
             switch (weaponCharacteristic[chosenWeapon].color)
             {
                 case "Red":
-                    backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0.8f, 0.8f));
+                    recharging = true;
                     break;
                 case "Blue":
+                    recharging = false;
                     backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.5f, 0.5f, 1));
                     break;
                 case "Green":
-                    backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.5f, 1, 0.5f));
+                    recharging = true;
                     break;
 
                 default:
@@ -149,16 +152,10 @@ public class Shooting : MonoBehaviour
         switch (weaponCharacteristic[chosenWeapon].color)
         {
             case "Red":
-                if (backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.GetColor("_BaseColor") != new Color(1, 0, 0))
+                if(weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate && recharging)
                 {
-                    if(weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate)
-                    {
-
-                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0, 0));
-                    } else
-                    {
-                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0.8f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate), 0.8f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate)));
-                    }
+                    SetWhite();
+                    recharging = false;
                 }
                 break;
             case "Blue":
@@ -174,15 +171,10 @@ public class Shooting : MonoBehaviour
                 }
                 break;
             case "Green":
-                if (backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.GetColor("_BaseColor") != new Color(0, 1, 0))
+                if (weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate && recharging)
                 {
-                    if (weaponCharacteristic[chosenWeapon].lastTimeShot > weaponCharacteristic[chosenWeapon].rate)
-                    {
-                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0, 1, 0));
-                    } else
-                    {
-                        backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.5f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate), 1, 0.5f - (weaponCharacteristic[chosenWeapon].lastTimeShot / weaponCharacteristic[chosenWeapon].rate)));
-                    }
+                    SetWhite();
+                    recharging = false;
                 }
                 break;
 
@@ -273,6 +265,45 @@ public class Shooting : MonoBehaviour
         {
             gunLine.SetPosition(1, transform.position + transform.forward * weaponCharacteristic[chosenWeapon].range);
             CreateLight(transform.position + transform.forward * weaponCharacteristic[chosenWeapon].range);
+        }
+    }
+
+    private void SetWhite()
+    {
+        switch (weaponCharacteristic[chosenWeapon].color)
+        {
+            case "Red":
+                backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0.7f, 0.7f));
+                break;
+            case "Blue":
+
+                break;
+            case "Green":
+                backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0.7f, 1, 0.7f));
+                break;
+
+            default:
+                break;
+        }
+        Invoke("SetColor",0.3f);
+    }
+
+    private void SetColor()
+    {
+        switch (weaponCharacteristic[chosenWeapon].color)
+        {
+            case "Red":
+                backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(1, 0, 0));
+                break;
+            case "Blue":
+
+                break;
+            case "Green":
+                backpack.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.SetColor("_BaseColor", new Color(0, 1, 0));
+                break;
+
+            default:
+                break;
         }
     }
 
