@@ -10,18 +10,22 @@ public class CargadorEscena : MonoBehaviour
 
     public string escenaPrincipal;
 
-    public string[] currentSceneList;
+    //public string[] currentSceneList;
 
     public string[] startingSceneList;
 
     public int sceneCount;
 
-    public bool first;
-    
+    public SceneObject sceneList;
 
     private void Awake()
     {
         cE = this;
+        //print("Es null?= " + sceneList.SceneList == null ? "si" : "no");
+        if(sceneList.SceneList != null)
+        {
+            startingSceneList = sceneList.SceneList;
+        }
         if (GameObject.FindGameObjectsWithTag("SceneManager").Length > 1)
         {
             Destroy(this.gameObject);
@@ -29,33 +33,21 @@ public class CargadorEscena : MonoBehaviour
         else
         {
             DontDestroyOnLoad(this.gameObject);
-            if (!first)
+            if (sceneList.SceneList != null)
+            {
+                CargarlasEscenas(sceneList.SceneList);
+            } else
             {
                 CargarlasEscenas(startingSceneList);
-                first = true;
             }
         }
 
 
     }
 
-    private void OnEnable()
-    {
-        
-    }
-    public void CargandoEscena()
-    {
-    }
-    public void MasDeUnaEscena()
-    {
-        if (sceneCount > 1)
-        {
-;       }
-    }
-
     public void CargarlasEscenas(string[] listaDeEscenas)
     {
-        currentSceneList = listaDeEscenas;
+        sceneList.SceneList = listaDeEscenas;
         foreach (Scene escenaActiva in getAllActiveScenes())
         {
             bool estaEnLaLista = false;
@@ -82,13 +74,13 @@ public class CargadorEscena : MonoBehaviour
 
     public void ReCargarLasEscenas()
     {
+        startingSceneList = sceneList.SceneList;
         Time.timeScale = 1;
         SceneManager.LoadScene(escenaPrincipal);
-        foreach (string escena in currentSceneList)
+        foreach (string escena in sceneList.SceneList)
         {
-           print("llega");
-           SceneManager.LoadScene(escena, LoadSceneMode.Additive);
-            
+            SceneManager.LoadScene(escena, LoadSceneMode.Additive);
+
         }
     }
 
@@ -107,23 +99,30 @@ public class CargadorEscena : MonoBehaviour
 
     public void LoadNewScene(string nuevaEscena)
     {
-        if(GameObject.FindGameObjectWithTag("Player") != null)
-        {
-            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetActiveScene());
-        }
-        if (GameObject.FindGameObjectWithTag("EnemyAim") != null)
-        {
-            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("EnemyAim"), SceneManager.GetActiveScene());
-        }
-        if (GameObject.FindGameObjectWithTag("EnemyAimBlue") != null)
-        {
-            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("EnemyAimBlue"), SceneManager.GetActiveScene());
-        }
-        if (GameObject.FindGameObjectWithTag("SceneManager") != null)
-        {
-            SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("SceneManager"), SceneManager.GetActiveScene());
-        }
-        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+        //if (GameObject.FindGameObjectWithTag("Player") != null)
+        //{
+        //    SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("Player"), SceneManager.GetActiveScene());
+        //}
+        //if (GameObject.FindGameObjectWithTag("EnemyAim") != null)
+        //{
+        //    SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("EnemyAim"), SceneManager.GetActiveScene());
+        //}
+        //if (GameObject.FindGameObjectWithTag("EnemyAimBlue") != null)
+        //{
+        //    SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("EnemyAimBlue"), SceneManager.GetActiveScene());
+        //}
+        //if (GameObject.FindGameObjectWithTag("SceneManager") != null)
+        //{
+        //    SceneManager.MoveGameObjectToScene(GameObject.FindGameObjectWithTag("SceneManager"), SceneManager.GetActiveScene());
+        //}
+        //if(gameObject != null)
+        //{
+        //    SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+        //}
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        Destroy(GameObject.FindGameObjectWithTag("EnemyAim"));
+        Destroy(GameObject.FindGameObjectWithTag("EnemyAimBlue"));
+        Destroy(GameObject.FindGameObjectWithTag("SceneManager"));
         Time.timeScale = 1;
         SceneManager.LoadScene(nuevaEscena);
 

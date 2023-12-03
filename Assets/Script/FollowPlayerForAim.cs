@@ -11,47 +11,60 @@ public class FollowPlayerForAim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (forBlue)
+        if(GameObject.FindGameObjectWithTag("Player") != null)
         {
+            if (forBlue)
+            {
 
-            //DontDestroyOnLoad(this.gameObject);
-            //if (GameObject.FindGameObjectsWithTag("EnemyAimBlue").Length > 1)
-            //{
-            //    Destroy(this.gameObject);
-            //}
-            whichWeapon = GameObject.FindGameObjectWithTag("GunBarrel").GetComponent<Shooting>();
-        } else
-        {
+                //DontDestroyOnLoad(this.gameObject);
+                //if (GameObject.FindGameObjectsWithTag("EnemyAimBlue").Length > 1)
+                //{
+                //    Destroy(this.gameObject);
+                //}
+                whichWeapon = GameObject.FindGameObjectWithTag("GunBarrel").GetComponent<Shooting>();
+            } else
+            {
 
-            //DontDestroyOnLoad(this.gameObject);
-            //if (GameObject.FindGameObjectsWithTag("EnemyAim").Length > 1)
-            //{
-            //    Destroy(this.gameObject);
-            //}
+                //DontDestroyOnLoad(this.gameObject);
+                //if (GameObject.FindGameObjectsWithTag("EnemyAim").Length > 1)
+                //{
+                //    Destroy(this.gameObject);
+                //}
+            }
+            player = GameObject.FindGameObjectWithTag("Player").transform;
         }
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        whichWeapon = GameObject.FindGameObjectWithTag("GunBarrel").GetComponent<Shooting>();
-        if (!forBlue)
+        if (GameObject.FindGameObjectWithTag("Player") != null)
         {
-            transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * speed *(transform.position - player.position).magnitude);
-        } else
-        {
-            //whichWeapon.weaponCharacteristic[whichWeapon.chosenWeapon]
 
-
-            if(whichWeapon.weaponCharacteristic[whichWeapon.chosenWeapon].color != "Green")
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+            whichWeapon = GameObject.FindGameObjectWithTag("GunBarrel").GetComponent<Shooting>();
+            if (!forBlue)
             {
-                transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * speed * (transform.position - player.position).magnitude * 4f);
-                
+                if(whichWeapon != null && player != null)
+                {
+                    transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * speed *(transform.position - player.position).magnitude);
+                }
             } else
             {
-                transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * speed * (transform.position - player.position).magnitude / 2f);
+                //whichWeapon.weaponCharacteristic[whichWeapon.chosenWeapon]
+
+                if(whichWeapon != null && player != null)
+                {
+                    if(whichWeapon.weaponCharacteristic[whichWeapon.chosenWeapon].color != "Green")
+                    {
+                        transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * speed * (transform.position - player.position).magnitude * 4f);
+                
+                    } else
+                    {
+                        transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * speed * (transform.position - player.position).magnitude / 2f);
+                    }
+                }
             }
         }
     }

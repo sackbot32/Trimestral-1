@@ -92,7 +92,8 @@ public class PlayerHealth : MonoBehaviour
     {
         
         Time.timeScale = 1;
-        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(CargadorEscena.cE.escenaPrincipal));
+        //SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(CargadorEscena.cE.escenaPrincipal));
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(SceneManager.GetActiveScene().name));
         gun.enabled = true;
         gameOver.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;

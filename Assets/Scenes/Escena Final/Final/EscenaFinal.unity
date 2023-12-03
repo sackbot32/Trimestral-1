@@ -16608,6 +16608,10 @@ PrefabInstance:
       value: SceneManagement
       objectReference: {fileID: 0}
     - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
+      propertyPath: sceneList
+      value: 
+      objectReference: {fileID: 11400000, guid: dca27c0988e2301459c177da1aa5c5fc, type: 2}
+    - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
       propertyPath: escenaPrincipal
       value: EscenaFinal
       objectReference: {fileID: 0}

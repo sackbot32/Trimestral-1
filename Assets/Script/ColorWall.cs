@@ -11,7 +11,6 @@ public class ColorWall : MonoBehaviour
     {
         if(color == shotColor)
         {
-            print("llega");
             health -= damage;
             if(health <= 0)
             {

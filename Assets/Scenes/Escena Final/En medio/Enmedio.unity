@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000006, guid: cae728e480c69b24597bf54a93be733c, type: 2}
   m_LightingSettings: {fileID: 503963491}
 --- !u!196 &4
 NavMeshSettings:
@@ -386,6 +386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneManagement
       objectReference: {fileID: 0}
+    - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
+      propertyPath: sceneList
+      value: 
+      objectReference: {fileID: 11400000, guid: c98447250a4269c43be31a472498b6bf, type: 2}
     - target: {fileID: 4393962976496366396, guid: 7901ff8d300694844a299b865da22578, type: 3}
       propertyPath: escenaPrincipal
       value: Enmedio

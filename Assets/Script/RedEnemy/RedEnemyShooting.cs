@@ -46,14 +46,12 @@ public class RedEnemyShooting : MonoBehaviour
                     {
                         if (hit.transform.GetComponent<PlayerHealth>() != null)
                         {
-                            print("choca con jugador");
                             hit.transform.GetComponent<PlayerHealth>().takeDamage(damage);
                         }
 
                     }
                     if (hit.transform.CompareTag("EnemyAim"))
                     {
-                        print("Player miss");
                     }
 
                 } else
